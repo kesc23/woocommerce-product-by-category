@@ -24,5 +24,3 @@ if ( ! defined('__WPCDIR__'))
 require_once (__WPCDIR__) . '/includes/wpc-functions.php';
 
 require_once (__WPCDIR__) . '/includes/wpc-shortcodes.php';
-
-//require_once plugin_dir_path (__FILE__) . 'includes/wcp-page.php';
