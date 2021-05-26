@@ -4,10 +4,15 @@ if ( ! defined( 'ABSPATH' )){
     exit;
 }
 
-function wpc_category_write( $category )
-{
-    echo do_shortcode( '[products category'. $category .']' );
+/**
+ * FUNÇÃO PARA EXIBIR O ADMIN 
+ * A função abaixo exibe o conteúdo do plugin no admin 
+**/
+
+function wpc_admin_page(){
+    include_once (__WPCDIR__) . '/admin/adminpage.php';
 }
+
 
 add_action( 'admin_menu', 'wpc_add_menu' );
 
@@ -17,8 +22,8 @@ function wpc_add_menu()
         'Woocommerce Product By Category',
         'Product By Category',
         'manage_options',
-        'includes/wpc-page.php',
-        '',
+        "/wpc-page.php",
+        'wpc_admin_page',
         'dashicons-cart'
     );
 }
