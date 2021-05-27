@@ -69,6 +69,18 @@ function wpc_shortcode_to_products()
                     margin: 5px auto;
                 }
             }
+
+            /* Corrects a bug in elementor  LINE 74-82 */
+            @media (max-width: 544px) {
+                .woocommerce[class*="columns-"].columns-3 > ul.products li.product, .woocommerce[class*="columns-"].columns-4 > ul.products li.product, .woocommerce[class*="columns-"].columns-5 > ul.products li.product, .woocommerce[class*="columns-"].columns-6 > ul.products li.product {
+                    width: 100%;
+                    min-width: 160px;
+                }
+                .woocommerce ul.products, .woocommerce-page ul.products, .woocommerce.mobile-columns-2 ul.products, .woocommerce-page.mobile-columns-2 ul.products li.product {
+                    grid-template-columns: repeat(2, minmax(0, 1fr))!important;
+                }
+            }
+
             .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
                 margin: 0px 4px!important;
             }
@@ -104,7 +116,9 @@ function wpc_shortcode_to_products()
         </style>
     </header>'
     . '<div class="wpc wrap">
-        <div class="wpc-cat">Category Name</div>
+        <div class="wpc-cat">
+            <h3 style="font-size: 21px; margin: 5px;">Category Name</h3>
+        </div>
         <span class="wpc-scroller">'
             . do_shortcode( '[products limit="10" columns="5"]' ) .
         '</span>
