@@ -31,8 +31,11 @@ function wpc_add_menu()
     );
 }
 
+//Register Stylesheets for plugin
 
+wp_register_style( 'wpc_loop', plugin_dir_url( dirname(__FILE__)) . 'styles/wpc_loop.css');
 
+wp_register_style( 'wpc_loop_elementor', plugin_dir_url( dirname(__FILE__)) . 'styles/wpc_loop_elementor.css');
 
 /**
  * A FUNÇÃO A SEGUIR É A BASE PARA ADICIONAR OS SHORTCODES DO WOOCOMMERCE
@@ -41,81 +44,18 @@ function wpc_add_menu()
 function wpc_shortcode_to_products()
 {
     
-    return
-    '<header>
-        <style>
-            .wpc-scroller {
-                width: 100%;
-                overflow-x: scroll;
-                display: block
-            }
-            @media only screen and (min-width: 768px){
-                .wpc.wrap {
-                    display: inline-flex;
-                    align-items: center;
-                    flex-wrap: wrap;
-                }
-                .wpc-scroller {
-                    width: 90%;
-                    overflow-x:
-                    unset;
-                    display: inline-block;
-                }
-                .woocommerce .products ul, .woocommerce ul.products {
-                    width: 90%!important;
-                }
-                span.wpc-btn {
-                    display: inline;
-                    margin: 5px auto;
-                }
-            }
+    //Calls The Stylesheet for the loop
+    wp_enqueue_style( 'wpc_loop', );
 
-            /* Corrects a bug in elementor  LINE 74-82 */
-            @media (max-width: 544px) {
-                .woocommerce[class*="columns-"].columns-3 > ul.products li.product, .woocommerce[class*="columns-"].columns-4 > ul.products li.product, .woocommerce[class*="columns-"].columns-5 > ul.products li.product, .woocommerce[class*="columns-"].columns-6 > ul.products li.product {
-                    width: 100%;
-                    min-width: 160px;
-                }
-                .woocommerce ul.products, .woocommerce-page ul.products, .woocommerce.mobile-columns-2 ul.products, .woocommerce-page.mobile-columns-2 ul.products li.product {
-                    grid-template-columns: repeat(2, minmax(0, 1fr))!important;
-                }
-            }
+    //IF ELEMENTOR IS ACTIVE
+    if (is_plugin_active( 'Elementor/elementor.php' ))
+    {
+        //Calls The Stylesheet for the loop if Elementor is active
+        wp_enqueue_style( 'wpc_loop_elementor' );
+    }
 
-            .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
-                margin: 0px 4px!important;
-            }
-            .woocommerce ul.products, .woocommerce-page ul.products {
-                flex-wrap: nowrap;
-                flex-direction: row;
-            }
-            .woocommerce .products ul, .woocommerce ul.products {
-                width: 125%;
-                min-width: 450px;
-            }
-            .woocommerce .button {
-                display: none!important;
-            }
-            span.wpc-btn {
-                padding: 12px;
-                background-color: white;
-                border-radius: 100%;
-                height: 45px;
-                width: 45px;
-                display: block;
-                margin-top: 5px;
-                margin-bottom: 5px;
-            }
-            .wpc{
-                border-width: 1px;
-                border-style: solid;
-                border-color: red;
-            }
-            .wpc-cat{
-                width: 100%;
-            }
-        </style>
-    </header>'
-    . '<div class="wpc wrap">
+    return 
+    '<div class="wpc wrap">
         <div class="wpc-cat">
             <h3 style="font-size: 21px; margin: 5px;">Category Name</h3>
         </div>
