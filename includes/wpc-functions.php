@@ -33,7 +33,7 @@ function wpc_add_menu()
 
 //Register Stylesheets for plugin
 
-wp_register_style( 'wpc_loop', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/wpc_loop.css', '', 'v0.3.0');
+wp_register_style( 'wpc_loop', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/wpc_loop.css', '', 'v0.4.0');
 
 wp_register_style( 'wpc_loop_elementor', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/wpc_loop_elementor.css');
 
@@ -54,7 +54,7 @@ function wpc_shortcode_to_products()
     wp_enqueue_scripts( 'wpc_kit_fontawesome' );
 
     //Calls The Stylesheet for the loop
-    wp_enqueue_style( 'wpc_loop', '', 'v0.3.0');
+    wp_enqueue_style( 'wpc_loop', '', 'v0.4.0');
 
     //Calls The Script for the icons
     wp_enqueue_style( 'wpc_FA_font_style' );
@@ -92,7 +92,7 @@ function wpc_shortcode_container()
     wp_enqueue_scripts( 'wpc_kit_fontawesome' );
 
     //Calls The Stylesheet for the loop
-    wp_enqueue_style( 'wpc_loop', '', 'v0.3.0');
+    wp_enqueue_style( 'wpc_loop', '', 'v0.4.0');
 
     //Calls The Script for the icons
     wp_enqueue_style( 'wpc_FA_font_style' );
