@@ -14,6 +14,11 @@ if ( ! defined( 'ABSPATH' )){
     exit;
 }
 
+//Dies if Woocommerce isn't activated
+
+if ( ! is_plugin_active( 'woocommerce/woocommerce.php' )){
+}
+
 //Define a constante do caminho para a pasta raiz do plugin caso não exista
 
 if ( ! defined('__WPCDIR__'))
