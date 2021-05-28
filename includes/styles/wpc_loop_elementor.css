@@ -1,4 +1,9 @@
 /* Corrects a bug in elementor  LINE 74-82 */
+/* 
+WOOCOMMERCE CLASS BASED STYLES
+WILL BE DEPRECATED
+*/
+
 @media (max-width: 544px) {
     .woocommerce[class*="columns-"].columns-3 > ul.products li.product, .woocommerce[class*="columns-"].columns-4 > ul.products li.product, .woocommerce[class*="columns-"].columns-5 > ul.products li.product, .woocommerce[class*="columns-"].columns-6 > ul.products li.product {
         width: 100%;

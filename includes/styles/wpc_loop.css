@@ -1,0 +1,100 @@
+/*
+CREATES A MEDIA QUERY FOR DESKTOP STYLE
+*/
+
+@media only screen and (min-width: 768px){
+    .wpc.wrap {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .wpc-scroller {
+        overflow-x: unset;
+    }
+    .woocommerce .products ul, .woocommerce ul.products {
+        width: 90%!important;
+    }
+    span.wpc-btn {
+        display: inline;
+        margin: 5px auto;
+        transform: unset!important;
+        max-width: 10%!important;
+    }
+    
+}
+/* 
+OVERALL STYLE
+*/
+
+/* SCROLLER BOX */
+.wpc-scroller {
+    overflow-x: scroll;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+/* HIDE SCROLLBAR IN ALL BROWSERS */
+.wpc-scroller::-webkit-scrollbar {
+    display: none;
+}
+.wpc-scroller {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* SEE/LEARN MORE SPAN */
+span.wpc-btn {
+    width: 100%;
+    max-width: 20%;
+    transform: translateX(150px);
+    text-align: center;
+    margin: 0px 0px 0px auto;
+}
+/* MAKES THE ARROW GO ABOVE THE LEARN MORE TEXT */
+i.fas.fa-arrow-right {
+    display: block;
+    border-radius: 100%;
+    background-color: #FFF;
+    padding: 15px;
+    -webkit-writing-mode: vertical-lr;
+    margin: 0px auto;
+}
+
+.wpc{
+    border-width: 1px;
+    border-style: solid;
+    border-color: red;
+}
+.wpc-cat{
+    width: 100%;
+}
+
+/* 
+WOOCOMMERCE CLASS BASED STYLES
+WILL BE DEPRECATED
+*/
+
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+    margin: 0px 4px!important;
+}
+    .woocommerce ul.products, .woocommerce-page ul.products {
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+.woocommerce .products ul, .woocommerce ul.products {
+    width: 125%;
+    min-width: 450px;
+}
+.woocommerce .button {
+    display: none!important;
+}
+
+@media only screen and (min-width: 768px){
+    .woocommerce .products ul, .woocommerce ul.products {
+        width: 90%!important;
+    }
+}

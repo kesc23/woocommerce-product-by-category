@@ -33,9 +33,16 @@ function wpc_add_menu()
 
 //Register Stylesheets for plugin
 
-wp_register_style( 'wpc_loop', plugin_dir_url( dirname(__FILE__)) . 'styles/wpc_loop.css');
+wp_register_style( 'wpc_loop', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/wpc_loop.css', '', 'v0.3.0');
 
-wp_register_style( 'wpc_loop_elementor', plugin_dir_url( dirname(__FILE__)) . 'styles/wpc_loop_elementor.css');
+wp_register_style( 'wpc_loop_elementor', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/wpc_loop_elementor.css');
+
+wp_register_style( 'wpc_FA_font_style', 'https://use.fontawesome.com/releases/v5.15.3/css/all.css');
+
+
+//Register Kit Fontawesome Script
+
+wp_register_script( 'wpc_kit_fontawesome', 'https://kit.fontawesome.com/b3fc9df41f.js');
 
 /**
  * A FUNÇÃO A SEGUIR É A BASE PARA ADICIONAR OS SHORTCODES DO WOOCOMMERCE
@@ -43,9 +50,14 @@ wp_register_style( 'wpc_loop_elementor', plugin_dir_url( dirname(__FILE__)) . 's
 
 function wpc_shortcode_to_products()
 {
-    
+    //Calls The Script for the icons
+    wp_enqueue_scripts( 'wpc_kit_fontawesome' );
+
     //Calls The Stylesheet for the loop
-    wp_enqueue_style( 'wpc_loop', );
+    wp_enqueue_style( 'wpc_loop', '', 'v0.3.0');
+
+    //Calls The Script for the icons
+    wp_enqueue_style( 'wpc_FA_font_style' );
 
     //IF ELEMENTOR IS ACTIVE
     if (is_plugin_active( 'Elementor/elementor.php' ))
@@ -59,13 +71,54 @@ function wpc_shortcode_to_products()
         <div class="wpc-cat">
             <h3 style="font-size: 21px; margin: 5px;">Category Name</h3>
         </div>
-        <span class="wpc-scroller">'
-            . do_shortcode( '[products limit="10" columns="5"]' ) .
-        '</span>
-        <span class="wpc-btn">
-            <a href="">
-            <span class="dashicons dashicons-arrow-right-alt"></span>
-            </a>
+        <span class="wpc-scroller">
+            <span class="wpc-post-content">'
+            .    do_shortcode( '[products limit="10" columns="5"]' ) .
+            '</span>
+            <span class="wpc-btn">
+                <a href="">'
+                .   '<i class="fas fa-arrow-right" style="font-size: 20px;"></i>
+                Veja Mais
+                </a>
+            </span>
+        </span>
+    </div>';
+}
+
+
+function wpc_shortcode_container()
+{
+    //Calls The Script for the icons
+    wp_enqueue_scripts( 'wpc_kit_fontawesome' );
+
+    //Calls The Stylesheet for the loop
+    wp_enqueue_style( 'wpc_loop', '', 'v0.3.0');
+
+    //Calls The Script for the icons
+    wp_enqueue_style( 'wpc_FA_font_style' );
+
+    //IF ELEMENTOR IS ACTIVE
+    if (is_plugin_active( 'Elementor/elementor.php' ))
+    {
+        //Calls The Stylesheet for the loop if Elementor is active
+        wp_enqueue_style( 'wpc_loop_elementor' );
+    }
+
+    return 
+    '<div class="wpc wrap">
+        <div class="wpc-cat">
+            <h3 style="font-size: 21px; margin: 5px;">Category Name</h3>
+        </div>
+        <span class="wpc-scroller">
+            <span class="wpc-post-content">
+                DO SOMETHING
+            </span>
+            <span class="wpc-btn">
+                <a href="">
+                    <i class="fas fa-arrow-right" style="font-size: 20px;"></i>
+                Veja Mais
+                </a>
+            </span>
         </span>
     </div>';
 }
