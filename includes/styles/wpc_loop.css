@@ -1,0 +1,134 @@
+/*
+CREATES A MEDIA QUERY FOR DESKTOP STYLE
+*/
+
+@media only screen and (min-width: 768px){
+    .wpc.wrap {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .wpc-scroller {
+        overflow-x: unset;
+    }
+    span.wpc-btn {
+        display: inline;
+        margin: 5px auto;
+        max-width: 12%!important;
+    }
+    .wpc-post-content li {
+        min-width: 160px!important;
+        max-width: 18%;
+    }
+    
+}
+/*
+OVERALL STYLE
+*/
+
+/* SCROLLER BOX */
+.wpc-scroller {
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+/* HIDE SCROLLBAR IN ALL BROWSERS */
+.wpc-scroller::-webkit-scrollbar {
+    display: none;
+}
+.wpc-scroller {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/**
+ * CONTENT SPAN SECTION
+ * 
+ * This Whole section controls the style for the loop
+ * inside the scroller section
+ *
+ * @since 0.6.0
+ */
+ .wpc-post-content {
+    min-width: 100%;
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+ }
+
+ .wpc-post-content li {
+    min-width: 220px;
+    max-width: 18%;
+    margin-right: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    /* padding: 3px; */
+ }
+
+ .wpc-post-content li img {
+    padding: 8px;
+ }
+
+ .wpc-post-content h3 {
+    border-top: 1px #bdbdbd solid;
+    padding: 5px;
+}
+
+
+/* SEE/LEARN MORE SPAN */
+span.wpc-btn {
+    align-self: center;
+    width: 100%;
+    min-width: 80px;
+    text-align: center;
+    margin: 0px 0px 0px auto;
+}
+/* MAKES THE ARROW GO ABOVE THE LEARN MORE TEXT */
+i.fas.fa-arrow-right {
+    display: block;
+    border-radius: 100%;
+    background-color: #FFF;
+    padding: 15px;
+    -webkit-writing-mode: vertical-lr;
+    margin: 0px auto;
+}
+
+.wpc{
+    border-right: 1px red solid;
+}
+.wpc-cat{
+    width: 100%;
+}
+
+/*
+WOOCOMMERCE CLASS BASED STYLES
+WILL BE DEPRECATED
+*/
+
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
+    margin: 0px 4px!important;
+}
+    .woocommerce ul.products, .woocommerce-page ul.products {
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+.woocommerce .products ul, .woocommerce ul.products {
+    width: 125%;
+    min-width: 450px;
+}
+.woocommerce .button {
+    display: none!important;
+}
+
+@media only screen and (min-width: 768px){
+    .woocommerce .products ul, .woocommerce ul.products {
+        width: 90%!important;
+    }
+}

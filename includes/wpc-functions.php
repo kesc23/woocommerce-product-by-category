@@ -31,8 +31,18 @@ function wpc_add_menu()
     );
 }
 
+//Register Stylesheets for plugin
+
+wp_register_style( 'wpc_loop', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/wpc_loop.css', '', 'v0.9.0');
+
+wp_register_style( 'wpc_loop_elementor', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/wpc_loop_elementor.css');
+
+wp_register_style( 'wpc_FA_font_style', 'https://use.fontawesome.com/releases/v5.15.3/css/all.css');
 
 
+//Register Kit Fontawesome Script
+
+wp_register_script( 'wpc_kit_fontawesome', 'https://kit.fontawesome.com/b3fc9df41f.js');
 
 /**
  * A FUNÇÃO A SEGUIR É A BASE PARA ADICIONAR OS SHORTCODES DO WOOCOMMERCE
@@ -40,78 +50,76 @@ function wpc_add_menu()
 
 function wpc_shortcode_to_products()
 {
-    
-    return
-    '<header>
-        <style>
-            .wpc-scroller {
-                width: 100%;
-                overflow-x: scroll;
-                display: block
-            }
-            @media only screen and (min-width: 768px){
-                .wpc.wrap {
-                    display: inline-flex;
-                    align-items: center;
-                    flex-wrap: wrap;
-                }
-                .wpc-scroller {
-                    width: 90%;
-                    overflow-x:
-                    unset;
-                    display: inline-block;
-                }
-                .woocommerce .products ul, .woocommerce ul.products {
-                    width: 90%!important;
-                }
-                span.wpc-btn {
-                    display: inline;
-                    margin: 5px auto;
-                }
-            }
-            .woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
-                margin: 0px 4px!important;
-            }
-            .woocommerce ul.products, .woocommerce-page ul.products {
-                flex-wrap: nowrap;
-                flex-direction: row;
-            }
-            .woocommerce .products ul, .woocommerce ul.products {
-                width: 125%;
-                min-width: 450px;
-            }
-            .woocommerce .button {
-                display: none!important;
-            }
-            span.wpc-btn {
-                padding: 12px;
-                background-color: white;
-                border-radius: 100%;
-                height: 45px;
-                width: 45px;
-                display: block;
-                margin-top: 5px;
-                margin-bottom: 5px;
-            }
-            .wpc{
-                border-width: 1px;
-                border-style: solid;
-                border-color: red;
-            }
-            .wpc-cat{
-                width: 100%;
-            }
-        </style>
-    </header>'
-    . '<div class="wpc wrap">
-        <div class="wpc-cat">Category Name</div>
-        <span class="wpc-scroller">'
-            . do_shortcode( '[products limit="10" columns="5"]' ) .
-        '</span>
-        <span class="wpc-btn">
-            <a href="">
-            <span class="dashicons dashicons-arrow-right-alt"></span>
-            </a>
+    //Calls The Script for the icons
+    wp_enqueue_scripts( 'wpc_kit_fontawesome' );
+
+    //Calls The Stylesheet for the loop
+    wp_enqueue_style( 'wpc_loop', '', 'v0.9.0');
+
+    //Calls The Script for the icons
+    wp_enqueue_style( 'wpc_FA_font_style' );
+
+    //IF ELEMENTOR IS ACTIVE
+    if (is_plugin_active( 'Elementor/elementor.php' ))
+    {
+        //Calls The Stylesheet for the loop if Elementor is active
+        wp_enqueue_style( 'wpc_loop_elementor' );
+    }
+
+    return 
+    '<div class="wpc wrap">
+        <div class="wpc-cat">
+            <h3 style="font-size: 21px; margin: 5px;">Category Name</h3>
+        </div>
+        <span class="wpc-scroller">
+            <span class="wpc-post-content">'
+            .    do_shortcode( '[products limit="10" columns="5"]' ) .
+            '</span>
+            <span class="wpc-btn">
+                <a href="">'
+                .   '<i class="fas fa-arrow-right" style="font-size: 20px;"></i>
+                Veja Mais
+                </a>
+            </span>
         </span>
     </div>';
+}
+
+/**
+ * CUSTOM TEMPLATE FOR PRODUCT LOOP
+ * 
+ * NOT WOOCOMMERCE BASED
+ * WILL WORK IF custom POST TYPE 'PRODUCT' IS DEFINED
+ * 
+ * @since 0.6.0
+ */
+require_once ((__WPCDIR__) . '/includes/product-loop.php');
+
+function wpc_shortcode_container()
+{
+    //Calls The Script for the icons
+    wp_enqueue_scripts( 'wpc_kit_fontawesome' );
+
+    //Calls The Stylesheet for the loop
+    wp_enqueue_style( 'wpc_loop', '', 'v0.9.0');
+
+    //Calls The Script for the icons
+    wp_enqueue_style( 'wpc_FA_font_style' );
+
+    //IF ELEMENTOR IS ACTIVE
+    if (is_plugin_active( 'Elementor/elementor.php' ))
+    {
+        //Calls The Stylesheet for the loop if Elementor is active
+        wp_enqueue_style( 'wpc_loop_elementor' );
+    }
+    
+
+    /**
+     * @see 'wpc_get_template()' in 'includes/product-loop.php'
+     * 
+     * @since 0.6.0
+     */
+    
+    return wpc_get_template('', 15);
+
 }
