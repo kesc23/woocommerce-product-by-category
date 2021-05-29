@@ -33,7 +33,7 @@ function wpc_add_menu()
 
 //Register Stylesheets for plugin
 
-wp_register_style( 'wpc_loop', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/wpc_loop.css', '', 'v0.4.0');
+wp_register_style( 'wpc_loop', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/wpc_loop.css', '', 'v0.9.0');
 
 wp_register_style( 'wpc_loop_elementor', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/wpc_loop_elementor.css');
 
@@ -54,7 +54,7 @@ function wpc_shortcode_to_products()
     wp_enqueue_scripts( 'wpc_kit_fontawesome' );
 
     //Calls The Stylesheet for the loop
-    wp_enqueue_style( 'wpc_loop', '', 'v0.4.0');
+    wp_enqueue_style( 'wpc_loop', '', 'v0.9.0');
 
     //Calls The Script for the icons
     wp_enqueue_style( 'wpc_FA_font_style' );
@@ -85,6 +85,15 @@ function wpc_shortcode_to_products()
     </div>';
 }
 
+/**
+ * CUSTOM TEMPLATE FOR PRODUCT LOOP
+ * 
+ * NOT WOOCOMMERCE BASED
+ * WILL WORK IF custom POST TYPE 'PRODUCT' IS DEFINED
+ * 
+ * @since 0.6.0
+ */
+require_once ((__WPCDIR__) . '/includes/product-loop.php');
 
 function wpc_shortcode_container()
 {
@@ -92,7 +101,7 @@ function wpc_shortcode_container()
     wp_enqueue_scripts( 'wpc_kit_fontawesome' );
 
     //Calls The Stylesheet for the loop
-    wp_enqueue_style( 'wpc_loop', '', 'v0.4.0');
+    wp_enqueue_style( 'wpc_loop', '', 'v0.9.0');
 
     //Calls The Script for the icons
     wp_enqueue_style( 'wpc_FA_font_style' );
@@ -103,22 +112,14 @@ function wpc_shortcode_container()
         //Calls The Stylesheet for the loop if Elementor is active
         wp_enqueue_style( 'wpc_loop_elementor' );
     }
+    
 
-    return 
-    '<div class="wpc wrap">
-        <div class="wpc-cat">
-            <h3 style="font-size: 21px; margin: 5px;">Category Name</h3>
-        </div>
-        <span class="wpc-scroller">
-            <span class="wpc-post-content">
-                DO SOMETHING
-            </span>
-            <span class="wpc-btn">
-                <a href="">
-                    <i class="fas fa-arrow-right" style="font-size: 20px;"></i>
-                Veja Mais
-                </a>
-            </span>
-        </span>
-    </div>';
+    /**
+     * @see 'wpc_get_template()' in 'includes/product-loop.php'
+     * 
+     * @since 0.6.0
+     */
+    
+    return wpc_get_template('', 15);
+
 }

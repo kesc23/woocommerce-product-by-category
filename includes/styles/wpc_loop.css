@@ -15,20 +15,21 @@ CREATES A MEDIA QUERY FOR DESKTOP STYLE
     span.wpc-btn {
         display: inline;
         margin: 5px auto;
-        transform: unset!important;
-        max-width: 10%!important;
+        max-width: 12%!important;
     }
-    .wpc-post-content {
-        max-width: 90%!important;
+    .wpc-post-content li {
+        min-width: 160px!important;
+        max-width: 18%;
     }
+    
 }
-/* 
+/*
 OVERALL STYLE
 */
 
 /* SCROLLER BOX */
 .wpc-scroller {
-    overflow-x: scroll;
+    overflow-x: auto;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -45,16 +46,47 @@ OVERALL STYLE
     scrollbar-width: none;  /* Firefox */
 }
 
-/* CONTENT SPAN */
-.wpc-post-content {
-    max-width: 80%;
+/**
+ * CONTENT SPAN SECTION
+ * 
+ * This Whole section controls the style for the loop
+ * inside the scroller section
+ *
+ * @since 0.6.0
+ */
+ .wpc-post-content {
+    min-width: 100%;
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+ }
+
+ .wpc-post-content li {
+    min-width: 220px;
+    max-width: 18%;
+    margin-right: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    /* padding: 3px; */
+ }
+
+ .wpc-post-content li img {
+    padding: 8px;
+ }
+
+ .wpc-post-content h3 {
+    border-top: 1px #bdbdbd solid;
+    padding: 5px;
 }
+
 
 /* SEE/LEARN MORE SPAN */
 span.wpc-btn {
+    align-self: center;
     width: 100%;
-    max-width: 20%;
-    transform: translateX(150px);
+    min-width: 80px;
     text-align: center;
     margin: 0px 0px 0px auto;
 }
@@ -69,15 +101,13 @@ i.fas.fa-arrow-right {
 }
 
 .wpc{
-    border-width: 1px;
-    border-style: solid;
-    border-color: red;
+    border-right: 1px red solid;
 }
 .wpc-cat{
     width: 100%;
 }
 
-/* 
+/*
 WOOCOMMERCE CLASS BASED STYLES
 WILL BE DEPRECATED
 */
