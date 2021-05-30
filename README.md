@@ -12,13 +12,31 @@
 
 ```Php
 /**
- *
+ * Gets the category name or return null
+ * and open the loop block for the template
  */
 function wpc_scroller_start();
 
+/**
+ * Gets most of the params from the master function
+ * 'wcp_get_template'. Returns the loop for the plugin
+ */
+Function wpc_scroller_routine();
 
-function wpc_scroller_routine();
-
-
+/**
+ * Gets to generate the last part for the loop block
+ * verifies if some error ocurred when parsing category name
+ */    
 function wpc_croller_end();
+
 ```
+
+> **Added the master function to handle loop generation**
+
+```php
+/**
+ * gets the params for generating the loop.
+ * later will accept args from parent function
+ * to work with the shortcode function 'wpc_shortcode_container'
+ */
+function wpc_get_template()
