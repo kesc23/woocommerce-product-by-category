@@ -69,7 +69,12 @@ If not, it shows an **error** and them shuts itself down.
 /**
  * ACTION HOOK TO VERIFY IF WOOCOMMERCE IS ACTIVE
  * CASE FALSE, DISPLAY ERROR MESSAGE AND DEACTIVATE PLUGIN
- * 'wpc_show_messages' function args: ( string $wpc_message, string $wpc_message_type)
+ * 'wpc_show_messages' 
+ *
+ * @since 0.6.0
+ *
+ * @param string $wpc_message      | The message to be used in the function
+ * @param string $wpc_message_type | The bootstrap class to be returned, styling the message
 **/
 
 if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) )
