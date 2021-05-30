@@ -55,3 +55,16 @@ function wpc_get_template( string $wpc_category = null, int $wpc_posts_to_show =
     return wpc_scroller_start($wpc_category) . wpc_scroller_routine($wpc_category, $wpc_posts_to_show) . wpc_scroller_end($wpc_category);
 }
 ```
+
+- Added Security measure from Requiring Woocommerce Active
+
+When the plugin loads, it will automatically search for the status 'active'
+from woocommerce.
+
+If not, it shows an **error** and them shuts itself down. 
+
+*If Woocommerce isn't installed and the plugin query its post_type, it would return a Fatal Error, giving the user a very **hard** time*
+
+```php
+
+```
