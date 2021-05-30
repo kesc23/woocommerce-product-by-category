@@ -72,9 +72,6 @@ If not, it shows an **error** and them shuts itself down.
  * 'wpc_show_messages' 
  *
  * @since 0.6.0
- *
- * @param string $wpc_message      | The message to be used in the function
- * @param string $wpc_message_type | The bootstrap class to be returned, styling the message
 **/
 
 if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) )
