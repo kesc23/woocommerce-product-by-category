@@ -66,5 +66,16 @@ If not, it shows an **error** and them shuts itself down.
 *If Woocommerce isn't installed and the plugin query its post_type, it would return a Fatal Error, giving the user a very **hard** time*
 
 ```php
+/**
+ * ACTION HOOK TO VERIFY IF WOOCOMMERCE IS ACTIVE
+ * CASE FALSE, DISPLAY ERROR MESSAGE AND DEACTIVATE PLUGIN
+ * 'wpc_show_messages' function args: ( string $wpc_message, string $wpc_message_type)
+**/
 
+if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) )
+{
+    do_action( 'admin_messages' , 'WooCommerce is not Activated. Please Activate Woocommerce', 'error');
+
+    deactivate_plugins( 'woocommerce-product-by-category/woocommerce-product-by-category.php' );
+}
 ```
