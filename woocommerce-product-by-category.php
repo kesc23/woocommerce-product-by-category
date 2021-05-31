@@ -1,36 +1,18 @@
 <?php
 /**
  * Plugin Name: Woocommerce Product By Category
- * Author: Kesc23
+ * @author: Kesc23 <https://felizex.pres>
  * Description: Tenha em seu site um ótimo componente responsivo para mostrar os produtos e suas categorias na sua loja
  * Author URI: https://felizex.press
- * Copyright: (c) 2021 Kesc23
- * Version: 0.6.0
- * Licence: GPL v3.0 or Later
+ * @copyright: Copyright (c) 2021, Kesc23
+ * @version: 0.7.0
+ * @license: GPL v3.0 or Later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
-**/
+ */
 
 if ( ! defined( 'ABSPATH' )){
     exit;
 }
-
-//Dies if Woocommerce isn't activated
-
-if ( ! is_plugin_active( 'woocommerce/woocommerce.php' )){
-}
-
-//Define a constante do caminho para a pasta raiz do plugin caso não exista
-
-if ( ! defined('__WPCDIR__'))
-{
-    define( '__WPCDIR__', (__DIR__) );
-}
-
-require_once (__WPCDIR__) . '/includes/wpc-functions.php';
-
-require_once (__WPCDIR__) . '/includes/wpc-shortcodes.php';
-
-require_once (__WPCDIR__) . '/admin/admin-functions.php';
 
 /**
  * ACTION HOOK TO VERIFY IF WOOCOMMERCE IS ACTIVE
@@ -44,3 +26,44 @@ if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) )
 
     deactivate_plugins( 'woocommerce-product-by-category/woocommerce-product-by-category.php' );
 }
+
+/**
+ * Defines the plugin root path
+ * 
+ * @since 0.7.0
+ */
+
+if ( ! defined('__WPCDIR__'))
+{
+    define( '__WPCDIR__', (__DIR__) );
+}
+
+/**
+ * Defines Admin path to the plugin
+ * 
+ * @since 0.7.0
+ */
+if ( ! defined('WPCADMIN') )
+{
+    define( 'WPCADMIN', __WPCDIR__ . '/admin' . '/');
+}
+
+/**
+ * Defines includes path to the plugin
+ * 
+ * @since 0.7.0
+ */
+if ( ! defined( 'WPCINC' ))
+{
+    define( 'WPCINC', __WPCDIR__ . '/includes' . '/' );
+}
+
+/**
+ * Loads the main scripts to run the plugin
+ */
+
+require_once WPCINC . 'wpc-functions.php';
+
+require_once WPCINC . 'wpc-shortcodes.php';
+
+require_once WPCADMIN . 'admin-functions.php';

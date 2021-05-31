@@ -13,7 +13,7 @@ function wpc_scroller_start( string $wpc_start_category = null)
     $wpc_start_output = 
     '<div class="wpc wrap">
         <div class="wpc-cat">
-            <h3 style="font-size: 21px; margin: 5px; font-weight: 600;">';
+            <h3 style="font-size: 21px; margin: 5px; font-weight: 600; text-transform: captalise">';
             $wpc_start_output .= $wpc_start_category . '</h3>
         </div>
         <span class="wpc-scroller">

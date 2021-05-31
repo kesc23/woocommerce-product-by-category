@@ -1,15 +1,7 @@
 <?php
 
-if ( ! defined( 'ABSPATH' )){
+if ( ! defined( 'ABSPATH' ) && ! defined( 'WPCINC' ) ){
     exit;
-}
-
-/**
- * FUNÇÃO PARA EXIBIR O ADMIN 
-**/
-
-function wpc_admin_page(){
-    include_once (__WPCDIR__) . '/admin/adminpage.php';
 }
 
 /**
@@ -18,8 +10,17 @@ function wpc_admin_page(){
 
 add_action( 'admin_menu', 'wpc_add_menu' );
 
+
+/**
+ * Function to define the plugin admin page
+ * 
+ * 
+ * 
+ * @since 0.1.0
+ */
 function wpc_add_menu()
-{
+{   
+    
     add_menu_page(
         'Woocommerce Product By Category',
         'Product By Category',
@@ -29,7 +30,18 @@ function wpc_add_menu()
         'dashicons-cart',
         58
     );
+    
 }
+
+
+/**
+ * FUNÇÃO PARA EXIBIR O ADMIN 
+**/
+
+function wpc_admin_page(){
+    include_once WPCADMIN . 'adminpage.php';
+}
+
 
 //Register Stylesheets for plugin
 
