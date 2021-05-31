@@ -1,9 +1,9 @@
 # Wocommerce Product By Category
 
 ### Author: Kesc23
-
-#### [MyTwitter](https://twitter.com/kevin_esc23)
-#### [Fiverr](https://fiverr.com/kesc23)
+| Twitter | Fiverr |
+|-|-:|
+| [@kevin_esc23](https://twitter.com/kevin_esc23) | [/kesc23](https://fiverr.com/kesc23)|
 
 #### Version 0.6.0
 #### Changelog
@@ -55,6 +55,7 @@ function wpc_get_template( string $wpc_category = null, int $wpc_posts_to_show =
     return wpc_scroller_start($wpc_category) . wpc_scroller_routine($wpc_category, $wpc_posts_to_show) . wpc_scroller_end($wpc_category);
 }
 ```
+---
 
 - Added Security measure from Requiring Woocommerce Active
 
@@ -64,6 +65,8 @@ from woocommerce.
 If not, it shows an **error** and them shuts itself down. 
 
 *If Woocommerce isn't installed and the plugin query its post_type, it would return a Fatal Error, giving the user a very **hard** time*
+
+> **Added action hook to protect initialization**
 
 ```php
 /**
