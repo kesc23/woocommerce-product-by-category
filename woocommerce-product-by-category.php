@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Woocommerce Product By Category
- * @author: Kesc23 <https://felizex.pres>
+ * @author: Kesc23
  * Description: Tenha em seu site um ótimo componente responsivo para mostrar os produtos e suas categorias na sua loja
  * Author URI: https://felizex.press
  * @copyright: Copyright (c) 2021, Kesc23
@@ -13,6 +13,11 @@
 if ( ! defined( 'ABSPATH' )){
     exit;
 }
+
+/**
+ * Declares the plugin version
+ */
+$wpc_version = '0.7.0';
 
 /**
  * ACTION HOOK TO VERIFY IF WOOCOMMERCE IS ACTIVE

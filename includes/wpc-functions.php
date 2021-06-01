@@ -25,7 +25,7 @@ function wpc_add_menu()
         'Woocommerce Product By Category',
         'Product By Category',
         'manage_options',
-        "/wpc-page.php",
+        "/wpc-page",
         'wpc_admin_page',
         'dashicons-cart',
         58
@@ -53,13 +53,20 @@ wp_register_style( 'wpc_FA_font_style', 'https://use.fontawesome.com/releases/v5
 
 
 //Register Kit Fontawesome Script
-
 wp_register_script( 'wpc_kit_fontawesome', 'https://kit.fontawesome.com/b3fc9df41f.js');
 
 /**
- * A FUNÇÃO A SEGUIR É A BASE PARA ADICIONAR OS SHORTCODES DO WOOCOMMERCE
+ * The function below is the base to add woocommerce shortcode.
+ * This is the Earliest, conceptual and old day to display the scroller.
+ * It won't work properly and is deprecated.
+ * 
+ * @return string       returns a string with all HTML tags needed
+ *                      surrounding the [product] woocommerce
+ *                      shortcode.
+ * 
+ * @since 0.2.0 
+ * @deprecated deprecated since version 0.7.0
 **/
-
 function wpc_shortcode_to_products()
 {
     //Calls The Script for the icons
@@ -107,6 +114,14 @@ function wpc_shortcode_to_products()
  */
 require_once ((__WPCDIR__) . '/includes/product-loop.php');
 
+
+/**
+ * This Function is Used to display the products inside a scroller.
+ * 
+ * @return string 
+ * 
+ * @since 0.6.0
+ */
 function wpc_shortcode_container()
 {
     //Calls The Script for the icons
