@@ -122,8 +122,15 @@ require_once ((__WPCDIR__) . '/includes/product-loop.php');
  * 
  * @since 0.6.0
  */
-function wpc_shortcode_container()
+function wpc_shortcode_container( string|array $atts )
 {
+    $atts = shortcode_atts(
+        array(
+            'cat-name'      => '',
+            'num-p'         => 5,
+            'p-order'       => 'ASC'
+        ), $atts );
+    
     //Calls The Script for the icons
     wp_enqueue_scripts( 'wpc_kit_fontawesome' );
 
@@ -147,6 +154,6 @@ function wpc_shortcode_container()
      * @since 0.6.0
      */
     
-    return wpc_get_template('', 15);
+    return wpc_get_template($atts['cat-name'], $atts['num-p'], $atts['p-order']);
 
 }

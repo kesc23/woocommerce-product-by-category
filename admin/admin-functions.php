@@ -71,7 +71,7 @@ function wpc_display_shortcode()
             return do_action( 'admin_messages' , 'Esse é o seu shortcode. insira-o na página desejada', 'updated') .
             '
             <div class="wpc-shortcode-field">
-                <p id="wpc-short-text">[WPC_PRODUCT_SHORTCODE cat-name="' . $_POST['cat-name'] . '" num-p=' . $_POST["num-p"] . '" p-order="' . $_POST["p-order"] .'"]</p>
+                <p id="wpc-short-text">[WPC_SHOW_CONTAINER cat-name="' . $_POST['cat-name'] . '" num-p=' . $_POST["num-p"] . '" p-order="' . $_POST["p-order"] .'"]</p>
                 <span class="wpc-copy" data-clipboard-action="copy" data-clipboard-target="#wpc-short-text" style="cursor: pointer;">
                     <i class="far fa-clipboard"></i>
                 </span>

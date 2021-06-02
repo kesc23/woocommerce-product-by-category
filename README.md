@@ -40,10 +40,9 @@ function wpc_admin_style()
 Then, all i need to do is echo out this function inside my admin page:
 
 ```php
-//inside adminpage.php
+/*inside adminpage.php*/
 
 require_once WPCADMIN . 'style.php';
-
 echo wpc_admin_style();
 ```
 
@@ -109,8 +108,7 @@ function wpc_display_shortcode()
 Inside the WPC page, there's a call to this function:
 
 ```php
-//Somewhere in the file
-
+/*Somewhere in the file*/
 echo wpc_display_shortcode();
 ```
 
@@ -166,5 +164,33 @@ function wpc_show_categories()
 - Added Clipboard JS Library to improve shortcode delivery
 
 Aiming for the best user experience, adding a clipboard functionality
-is good to help the things to go as faster as it can, while i don't add the WP Block functionality (which involves JS *not my strenght at all*)
+is good to help the things to go as faster as it can, while i don't add the WP Block functionality (which involves JS, *not my strenght at all*)
 
+- Shortcode is now 100% functional
+
+After more reading in the WP CODEX, i finally understood how to apply
+the attributes to the shortcode.
+
+So, right now you can use this plugin and it will work perfectly. 
+altough the generation form needs little improvement, this can now be added to the sites with no fear.
+
+The ordering of your products can be made by
+
+- ***name,* Ascending or Descending**,
+- **Category name**
+- **Numer of Products**
+
+```php
+function wpc_shortcode_container( string|array $atts )
+{
+    $atts = shortcode_atts(
+        array(
+            'cat-name'      => '',
+            'num-p'         => 5,
+            'p-order'       => 'ASC'
+        ), $atts );
+    
+    ...
+
+}
+```

@@ -23,20 +23,35 @@ function wpc_scroller_start( string $wpc_start_category = null)
 
 
 /**
+ * The scroller box function.
+ *
+ * @since 0.6.0
  * 
+ * @param  string $wpc_category_routine             Is the category to be queried
+ * @param integer $wpc_routine_posts_to_show        Is the 'limiter' for posts
+ *                                                  to show inside the loop.
+ * @param  string $wpc_routine_order @since 0.7.0   Is to order, by name if is ASC or DESC
+ * @return void
  */
-function wpc_scroller_routine( string $wpc_category_routine, int $wpc_routine_posts_to_show)
+function wpc_scroller_routine( string $wpc_category_routine, int $wpc_routine_posts_to_show, string $wpc_routine_order)
 {   
     if ( $wpc_category_routine == null)
     {
         $wpc_category_routine = 0; //Display all Products if is empty
     }
 
+    /**
+     * Queries, inside the WP DB, for:
+     * posts of type 'product'
+     * ordered by 'name'
+     */
     $wpc_product_query = new WP_Query(
         array(
-            'post_type' => 'product',
-            'product_cat' => $wpc_category_routine,
-            'nopaging' => true
+            'post_type'     => 'product',
+            'product_cat'   => $wpc_category_routine,
+            'nopaging'      => true,
+            'orderby'       => 'title',
+            'order'         => $wpc_routine_order
         )
     );
     
@@ -47,34 +62,43 @@ function wpc_scroller_routine( string $wpc_category_routine, int $wpc_routine_po
         $wpc_post_count = 0;
 
         /**
-         * THIS LOOP TESTS FOR THE POSTS IN QUERY
-         * IT RETURNS A NUMBER TO BE USED IN CSS FOR MOBILE PHONES
-         * 
-         * @since 0.6.0
+         * This loop tests for the posts in query.
+         * It returns a number to calculate the number of posts displayed if
+         * the @param $wpc_routine_posts_to_show is passed. 
          */
         while ( $wpc_product_query->have_posts() )
         {
             $wpc_product_query->the_post();
             $wpc_post_count += 1;
         }
-
-        if ($wpc_post_count >= 5){
-            
-            $wpc_post_count = 5;
-
-        } elseif ($wpc_post_count < 5 AND $wpc_post_count >= 2)
+        
+        /**
+         * This "if" section is to always set up the lowest number
+         * of products in the query.
+         * 
+         * @since 0.7.0
+         * 
+         * For example: if the @var $wpc_routine_posts_to_show
+         * is > the max post count, and this goes inside the loop
+         * the WordPress will return an error in the page with the shortcode
+         * as it is trying to show a unexistent product.
+         * For the functionality sake, using those parameters to limit them
+         * to 'themselves' is the best option.
+         */
+        if ( isset($wpc_routine_posts_to_show) && $wpc_routine_posts_to_show == $wpc_post_count)
         {
-            switch ($wpc_post_count) {
-                case 2:
-                    $wpc_post_count = 2;
-                    break;
-                case 3:
-                    $wpc_post_count = 3;
-                    break;
-                case 4:
-                    $wpc_post_count = 4;
-                    break;
-            }
+
+            $wpc_post_count = $wpc_post_count;
+        
+        } elseif ( isset($wpc_routine_posts_to_show) && $wpc_routine_posts_to_show > $wpc_post_count)
+        {
+
+            $wpc_post_count = min($wpc_routine_posts_to_show, $wpc_post_count);
+        
+        } elseif ( isset($wpc_routine_posts_to_show) && $wpc_routine_posts_to_show < $wpc_post_count) {
+
+            $wpc_post_count = min($wpc_routine_posts_to_show, $wpc_post_count);
+        
         }
 
 
@@ -149,8 +173,18 @@ function wpc_scroller_end( string $wpc_category_end = null)
  * WPC GET TEMPLATE
  * 
  * @since 0.6.0
+ * 
+ * @param string $wpc_category          The category name Passed in the Shortcode.
+ *                                      If none is passed, it will return all the
+ *                                      Products.
+ * @param    int $wpc_posts_to_show     The max. number of posts to show. If value
+ *                                      is not passed, it will limit them to 5
+ * @param string $wpc_p_order           The order that posts should appear
+ * 
+ * @return string                       Returns the concatenation of all requested
+ *                                      subfunctions into a beautiful post carousel.
  */
-function wpc_get_template(string $wpc_category = null, int $wpc_posts_to_show = null)
+function wpc_get_template(string $wpc_category = null, int $wpc_posts_to_show = 5, string $wpc_p_order = 'ASC')
 {   
-    return wpc_scroller_start($wpc_category) . wpc_scroller_routine($wpc_category, $wpc_posts_to_show) . wpc_scroller_end($wpc_category);
+    return wpc_scroller_start($wpc_category) . wpc_scroller_routine($wpc_category, $wpc_posts_to_show, $wpc_p_order) . wpc_scroller_end($wpc_category);
 }
