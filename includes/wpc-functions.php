@@ -1,15 +1,7 @@
 <?php
 
-if ( ! defined( 'ABSPATH' )){
+if ( ! defined( 'ABSPATH' ) && ! defined( 'WPCINC' ) ){
     exit;
-}
-
-/**
- * FUNÇÃO PARA EXIBIR O ADMIN 
-**/
-
-function wpc_admin_page(){
-    include_once (__WPCDIR__) . '/admin/adminpage.php';
 }
 
 /**
@@ -18,18 +10,38 @@ function wpc_admin_page(){
 
 add_action( 'admin_menu', 'wpc_add_menu' );
 
+
+/**
+ * Function to define the plugin admin page
+ * 
+ * 
+ * 
+ * @since 0.1.0
+ */
 function wpc_add_menu()
-{
+{   
+    
     add_menu_page(
         'Woocommerce Product By Category',
         'Product By Category',
         'manage_options',
-        "/wpc-page.php",
+        "/wpc-page",
         'wpc_admin_page',
         'dashicons-cart',
         58
     );
+    
 }
+
+
+/**
+ * FUNÇÃO PARA EXIBIR O ADMIN 
+**/
+
+function wpc_admin_page(){
+    include_once WPCADMIN . 'adminpage.php';
+}
+
 
 //Register Stylesheets for plugin
 
@@ -41,13 +53,20 @@ wp_register_style( 'wpc_FA_font_style', 'https://use.fontawesome.com/releases/v5
 
 
 //Register Kit Fontawesome Script
-
 wp_register_script( 'wpc_kit_fontawesome', 'https://kit.fontawesome.com/b3fc9df41f.js');
 
 /**
- * A FUNÇÃO A SEGUIR É A BASE PARA ADICIONAR OS SHORTCODES DO WOOCOMMERCE
+ * The function below is the base to add woocommerce shortcode.
+ * This is the Earliest, conceptual and old day to display the scroller.
+ * It won't work properly and is deprecated.
+ * 
+ * @return string       returns a string with all HTML tags needed
+ *                      surrounding the [product] woocommerce
+ *                      shortcode.
+ * 
+ * @since 0.2.0 
+ * @deprecated deprecated since version 0.7.0
 **/
-
 function wpc_shortcode_to_products()
 {
     //Calls The Script for the icons
@@ -95,8 +114,23 @@ function wpc_shortcode_to_products()
  */
 require_once ((__WPCDIR__) . '/includes/product-loop.php');
 
-function wpc_shortcode_container()
+
+/**
+ * This Function is Used to display the products inside a scroller.
+ * 
+ * @return string 
+ * 
+ * @since 0.6.0
+ */
+function wpc_shortcode_container( string|array $atts )
 {
+    $atts = shortcode_atts(
+        array(
+            'cat-name'      => '',
+            'num-p'         => 5,
+            'p-order'       => 'ASC'
+        ), $atts );
+    
     //Calls The Script for the icons
     wp_enqueue_scripts( 'wpc_kit_fontawesome' );
 
@@ -120,6 +154,6 @@ function wpc_shortcode_container()
      * @since 0.6.0
      */
     
-    return wpc_get_template('', 15);
+    return wpc_get_template($atts['cat-name'], $atts['num-p'], $atts['p-order']);
 
 }
