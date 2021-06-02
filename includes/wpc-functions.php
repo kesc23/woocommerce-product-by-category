@@ -42,18 +42,40 @@ function wpc_admin_page(){
     include_once WPCADMIN . 'adminpage.php';
 }
 
+/**
+ * This function helps to register the styles for the boxes.
+ * 
+ * @since 0.7.1
+ */
+function wpc_scripts_register()
+{
+    wp_register_style( 'wpc_loop', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/wpc_loop.css', '', null);
 
-//Register Stylesheets for plugin
+    wp_register_style( 'wpc_FA_font_style', 'https://use.fontawesome.com/releases/v5.15.3/css/all.css');
 
-wp_register_style( 'wpc_loop', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/wpc_loop.css', '', 'v0.9.0');
+    //Register Kit Fontawesome Script
+    wp_register_script( 'wpc_kit_fontawesome', 'https://kit.fontawesome.com/b3fc9df41f.js');
 
-wp_register_style( 'wpc_loop_elementor', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/wpc_loop_elementor.css');
+}
 
-wp_register_style( 'wpc_FA_font_style', 'https://use.fontawesome.com/releases/v5.15.3/css/all.css');
+/**
+ * This function help to load the styles for the boxes.
+ * 
+ * @since 0.7.1
+ */
+function wpc_scripts(){
+
+    //Calls The Script for the icons
+    wp_enqueue_script( 'wpc_kit_fontawesome' );
+
+    //Calls The Stylesheet for the loop
+    wp_enqueue_style( 'wpc_loop', '', null);
+
+    //Calls The style for the icons
+    wp_enqueue_style( 'wpc_FA_font_style' );
+}
 
 
-//Register Kit Fontawesome Script
-wp_register_script( 'wpc_kit_fontawesome', 'https://kit.fontawesome.com/b3fc9df41f.js');
 
 /**
  * The function below is the base to add woocommerce shortcode.
@@ -69,21 +91,7 @@ wp_register_script( 'wpc_kit_fontawesome', 'https://kit.fontawesome.com/b3fc9df4
 **/
 function wpc_shortcode_to_products()
 {
-    //Calls The Script for the icons
-    wp_enqueue_scripts( 'wpc_kit_fontawesome' );
 
-    //Calls The Stylesheet for the loop
-    wp_enqueue_style( 'wpc_loop', '', 'v0.9.0');
-
-    //Calls The Script for the icons
-    wp_enqueue_style( 'wpc_FA_font_style' );
-
-    //IF ELEMENTOR IS ACTIVE
-    if (is_plugin_active( 'Elementor/elementor.php' ))
-    {
-        //Calls The Stylesheet for the loop if Elementor is active
-        wp_enqueue_style( 'wpc_loop_elementor' );
-    }
 
     return 
     '<div class="wpc wrap">
@@ -121,32 +129,17 @@ require_once ((__WPCDIR__) . '/includes/product-loop.php');
  * @return string 
  * 
  * @since 0.6.0
+ * @since 0.7.0 added the functionality to filter by its attributes
+ * passed in the shorcode.
  */
-function wpc_shortcode_container( string|array $atts )
+function wpc_shortcode_container( $atts )
 {
     $atts = shortcode_atts(
         array(
             'cat-name'      => '',
             'num-p'         => 5,
             'p-order'       => 'ASC'
-        ), $atts );
-    
-    //Calls The Script for the icons
-    wp_enqueue_scripts( 'wpc_kit_fontawesome' );
-
-    //Calls The Stylesheet for the loop
-    wp_enqueue_style( 'wpc_loop', '', 'v0.9.0');
-
-    //Calls The Script for the icons
-    wp_enqueue_style( 'wpc_FA_font_style' );
-
-    //IF ELEMENTOR IS ACTIVE
-    if (is_plugin_active( 'Elementor/elementor.php' ))
-    {
-        //Calls The Stylesheet for the loop if Elementor is active
-        wp_enqueue_style( 'wpc_loop_elementor' );
-    }
-    
+        ), $atts );   
 
     /**
      * @see 'wpc_get_template()' in 'includes/product-loop.php'

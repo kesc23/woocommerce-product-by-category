@@ -5,7 +5,7 @@
  * Description: Tenha em seu site um ótimo componente responsivo para mostrar os produtos e suas categorias na sua loja
  * Author URI: https://felizex.press
  * @copyright: Copyright (c) 2021, Kesc23
- * @version: 0.7.0
+ * @version: 0.7.1
  * @license: GPL v3.0 or Later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' )){
 /**
  * Declares the plugin version
  */
-$wpc_version = '0.7.0';
+$wpc_version = '0.7.1';
 
 /**
  * ACTION HOOK TO VERIFY IF WOOCOMMERCE IS ACTIVE
@@ -72,3 +72,13 @@ require_once WPCINC . 'wpc-functions.php';
 require_once WPCINC . 'wpc-shortcodes.php';
 
 require_once WPCADMIN . 'admin-functions.php';
+
+
+/**
+ * Action hooks added to correct some mess in 0.7.0
+ */
+add_action( 'wp_loaded', 'wpc_scripts_register');
+
+add_action( 'wp_enqueue_scripts', 'wpc_scripts');
+
+wp_deregister_style( 'wpc_loop_elementor' ); //Will be removed in next version

@@ -5,8 +5,16 @@
 |-|-:|
 | [@kevin_esc23](https://twitter.com/kevin_esc23) | [/kesc23](https://fiverr.com/kesc23)|
 
-#### Version 0.7.0
+### Version 0.7.1
 #### Changelog
+
+- HOTFIX
+
+An error while loading scripts to wp was causing it to throw a FATAL ERROR.
+Now solved ;)
+
+#### Version 0.7.0
+##### Changelog
 
 - Changed admin style from 'style.css' to 'style.php'
 

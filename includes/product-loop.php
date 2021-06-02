@@ -27,10 +27,10 @@ function wpc_scroller_start( string $wpc_start_category = null)
  *
  * @since 0.6.0
  * 
- * @param  string $wpc_category_routine             Is the category to be queried
- * @param integer $wpc_routine_posts_to_show        Is the 'limiter' for posts
- *                                                  to show inside the loop.
- * @param  string $wpc_routine_order @since 0.7.0   Is to order, by name if is ASC or DESC
+ * @param  string $wpc_category_routine              Is the category to be queried
+ * @param integer $wpc_routine_posts_to_show         Is the 'limiter' for posts
+ *                                                   to show inside the loop.
+ * @since 0.7.0   @param  string $wpc_routine_order  Is to order, by name if is ASC or DESC
  * @return void
  */
 function wpc_scroller_routine( string $wpc_category_routine, int $wpc_routine_posts_to_show, string $wpc_routine_order)
