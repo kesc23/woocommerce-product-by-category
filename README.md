@@ -5,7 +5,7 @@
 |-|-:|
 | [@kevin_esc23](https://twitter.com/kevin_esc23) | [/kesc23](https://fiverr.com/kesc23)|
 
-### Version 0.7.1
+### Version 0.7.2
 #### Changelog
 
 - HOTFIX *(Again)*
