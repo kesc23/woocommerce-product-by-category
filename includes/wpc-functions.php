@@ -150,3 +150,21 @@ function wpc_shortcode_container( $atts )
     return wpc_get_template($atts['cat-name'], $atts['num-p'], $atts['p-order']);
 
 }
+
+/**
+ * function to define ACTION HOOK TO VERIFY IF WOOCOMMERCE IS ACTIVE
+ * CASE FALSE, DISPLAY ERROR MESSAGE AND DEACTIVATE PLUGIN
+ * 'wpc_show_messages' function args: ( string $wpc_message, string $wpc_message_type)
+ * 
+ * @since 0.7.2
+**/
+function wpc_activated(){
+
+    if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) )
+    {
+        do_action( 'admin_messages' , 'WooCommerce is not Activated. Please Activate Woocommerce', 'error');
+
+        deactivate_plugins( __WPCDIR__ . '/woocommerce-product-by-category.php' );
+    }
+
+}

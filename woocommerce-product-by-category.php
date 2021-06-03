@@ -19,18 +19,6 @@ if ( ! defined( 'ABSPATH' )){
  */
 $wpc_version = '0.7.1';
 
-/**
- * ACTION HOOK TO VERIFY IF WOOCOMMERCE IS ACTIVE
- * CASE FALSE, DISPLAY ERROR MESSAGE AND DEACTIVATE PLUGIN
- * 'wpc_show_messages' function args: ( string $wpc_message, string $wpc_message_type)
-**/
-
-if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) )
-{
-    do_action( 'admin_messages' , 'WooCommerce is not Activated. Please Activate Woocommerce', 'error');
-
-    deactivate_plugins( 'woocommerce-product-by-category/woocommerce-product-by-category.php' );
-}
 
 /**
  * Defines the plugin root path
@@ -75,10 +63,12 @@ require_once WPCADMIN . 'admin-functions.php';
 
 
 /**
- * Action hooks added to correct some mess in 0.7.0
+ * @since 0.7.1 Action hooks added to correct some mess in 0.7.0
+ * 
+ * @since 0.7.2 hook wpc_activated to correct another mess
  */
 add_action( 'wp_loaded', 'wpc_scripts_register');
 
 add_action( 'wp_enqueue_scripts', 'wpc_scripts');
 
-wp_deregister_style( 'wpc_loop_elementor' ); //Will be removed in next version
+add_action( 'activated_plugin', 'wpc_activated');
