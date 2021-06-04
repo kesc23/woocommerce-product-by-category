@@ -33,10 +33,10 @@ function wpc_show_messages( string $wpc_message, string $wpc_message_type)
 
     if ($wpc_message_type == "error")
     {
-        $wpc_message_class = '"error"';
+        $wpc_message_class = '"error notice is-dismissible"';
         $wpc_error = "<strong>ERROR</strong>: ";
     } else {
-        $wpc_message_class = '"updated"';
+        $wpc_message_class = '"updated notice is-dismissible"';
     }
     
     echo ('<div class=' . $wpc_message_class . '><p>' . $wpc_error . $wpc_message . '</p></div>');

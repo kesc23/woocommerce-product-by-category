@@ -3,29 +3,59 @@ CREATES A MEDIA QUERY FOR DESKTOP STYLE
 */
 
 @media only screen and (min-width: 768px){
+    /* Main Containter */
     .wpc.wrap {
         display: inline-flex;
         align-items: center;
         flex-wrap: wrap;
         width: 100%;
     }
+    /* Scroller Container */
     .wpc-scroller {
-        overflow-x: unset;
+        overflow-x: auto;
     }
+    /* "See more" button */
     span.wpc-btn {
         display: inline;
         margin: 5px auto;
         max-width: 12%!important;
+        min-width: 90px!important;
     }
+    /* Each Product in Loop */
     .wpc-post-content li {
-        min-width: 160px!important;
-        max-width: 18%;
+        min-width: 190px!important;
+        max-width: 190px!important;
     }
-    
+    /* Fills the image in the loop */
+    .wpc-post-content li img {
+        height: 190px;
+        width: 100%;
+        object-fit: cover;
+     }
+
+    /* Change Scrollbar in tablet/Desktop */
+    .wpc-scroller::-webkit-scrollbar{
+        background-color: rgb(209, 209, 209);
+        height: 8px;
+        display: block;
+        border-radius: 100vh;
+     }
+     .wpc-scroller::-webkit-scrollbar-thumb{
+        background-color: rgb(150, 150, 150);
+        border-radius: 100vh;
+        max-height: 3px;
+     }
+     .wpc-scroller::-webkit-scrollbar-thumb:active{
+        background-color: rgb(70, 70, 70);
+     }
+     .wpc-scroller {
+        padding-bottom: 5px;
+    }
+
 }
-/*
-OVERALL STYLE
-*/
+/**
+ * OVERALL STYLE
+ */
 
 /* SCROLLER BOX */
 .wpc-scroller {
@@ -37,14 +67,6 @@ OVERALL STYLE
     width: 100%;
 }
 
-/* HIDE SCROLLBAR IN ALL BROWSERS */
-.wpc-scroller::-webkit-scrollbar {
-    display: none;
-}
-.wpc-scroller {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
 
 /**
  * CONTENT SPAN SECTION
@@ -63,26 +85,30 @@ OVERALL STYLE
     align-items: stretch;
  }
 
+ /* Product box */
  .wpc-post-content li {
     min-width: 220px;
     max-width: 18%;
     margin-right: 10px;
     border-radius: 4px;
     background-color: #fff;
+    border: 1px solid #d6d6d6;
     /* padding: 3px; */
  }
 
+ /* image in the loop */
  .wpc-post-content li img {
     padding: 8px;
  }
 
+ /* Peoduct Title in the loop */
  .wpc-post-content h3 {
     border-top: 1px #bdbdbd solid;
     padding: 5px;
 }
 
 
-/* SEE/LEARN MORE SPAN */
+/* "SEE/LEARN MORE" SPAN */
 span.wpc-btn {
     align-self: center;
     width: 100%;
@@ -105,30 +131,4 @@ i.fas.fa-arrow-right {
 }*/
 .wpc-cat{
     width: 100%;
-}
-
-/*
-WOOCOMMERCE CLASS BASED STYLES
-WILL BE DEPRECATED
-*/
-
-.woocommerce ul.products li.product, .woocommerce-page ul.products li.product {
-    margin: 0px 4px!important;
-}
-    .woocommerce ul.products, .woocommerce-page ul.products {
-    flex-wrap: nowrap;
-    flex-direction: row;
-}
-.woocommerce .products ul, .woocommerce ul.products {
-    width: 125%;
-    min-width: 450px;
-}
-.woocommerce .button {
-    display: none!important;
-}
-
-@media only screen and (min-width: 768px){
-    .woocommerce .products ul, .woocommerce ul.products {
-        width: 90%!important;
-    }
 }

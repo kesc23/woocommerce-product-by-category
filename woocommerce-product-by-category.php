@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' )){
 /**
  * Declares the plugin version
  */
-$wpc_version = '0.7.1';
+$wpc_version = '0.7.2';
 
 
 /**
@@ -61,7 +61,6 @@ require_once WPCINC . 'wpc-shortcodes.php';
 
 require_once WPCADMIN . 'admin-functions.php';
 
-
 /**
  * @since 0.7.1 Action hooks added to correct some mess in 0.7.0
  * 
@@ -72,3 +71,5 @@ add_action( 'wp_loaded', 'wpc_scripts_register');
 add_action( 'wp_enqueue_scripts', 'wpc_scripts');
 
 add_action( 'activated_plugin', 'wpc_activated');
+
+add_action( 'wp_loaded', 'wpc_activated');
