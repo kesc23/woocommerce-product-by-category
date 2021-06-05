@@ -5,8 +5,17 @@
 |-|-:|
 | [@kevin_esc23](https://twitter.com/kevin_esc23) | [/kesc23](https://fiverr.com/kesc23)|
 
-### Version 0.8.0
+### Version 0.8.1
 #### Changelog
+
+- **HOTFIX !**
+
+Fixed error in shortcode generator.
+
+The user was unable to select how many products would have to appear in a row.
+
+#### Version 0.8.0
+##### Changelog
 
 ### *Desktop Update*
 - Changed the way Scrollbars look in Desktop
