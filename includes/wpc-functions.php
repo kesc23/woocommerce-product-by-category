@@ -87,7 +87,7 @@ function wpc_scripts(){
  *                      shortcode.
  * 
  * @since 0.2.0 
- * @deprecated deprecated since version 0.7.0
+ * @since 0.7.0         @deprecated 
 **/
 function wpc_shortcode_to_products()
 {
