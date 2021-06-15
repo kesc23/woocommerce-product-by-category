@@ -1,10 +1,14 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) )
+{
+    exit;
+}
 /**
  * This Function is used in the deactivation process to dequeue
  * the styles and scripts.
  *
- * @since 0.9.0
+ * @since 1.0.0
  */
 function wpcOnDeactivate()
 {

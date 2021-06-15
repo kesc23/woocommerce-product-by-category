@@ -5,7 +5,7 @@
  * Description: Tenha em seu site um ótimo componente responsivo para mostrar os produtos e suas categorias na sua loja
  * Author URI: https://felizex.press
  * @copyright: Copyright (c) 2021, Kesc23
- * @version: 0.9.0
+ * @version: 1.0.0
  * @license: GPL v3.0 or Later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' )){
 /**
  * Declares the plugin version
  */
-$wpc_version = '0.9.0';
+$wpc_version = '1.0.0';
 
 
 /**
@@ -26,9 +26,9 @@ $wpc_version = '0.9.0';
  * @since 0.7.0
  */
 
-if ( ! defined('__WPCDIR__'))
+if ( ! defined('WPCDIR'))
 {
-    define( '__WPCDIR__', (__DIR__) );
+    define( 'WPCDIR', (__DIR__) );
 }
 
 /**
@@ -38,7 +38,7 @@ if ( ! defined('__WPCDIR__'))
  */
 if ( ! defined('WPCADMIN') )
 {
-    define( 'WPCADMIN', __WPCDIR__ . '/admin' . '/');
+    define( 'WPCADMIN', WPCDIR . '/admin' . '/');
 }
 
 /**
@@ -48,7 +48,7 @@ if ( ! defined('WPCADMIN') )
  */
 if ( ! defined( 'WPCINC' ))
 {
-    define( 'WPCINC', __WPCDIR__ . '/includes' . '/' );
+    define( 'WPCINC', WPCDIR . '/includes' . '/' );
 }
 
 /**
@@ -64,9 +64,11 @@ require_once WPCADMIN . 'admin-functions.php';
 require_once 'wpc-deactivation.php';
 
 /**
- * @since 0.7.1 Action hooks added to correct some mess in 0.7.0
+ * @since 0.7.1 Action hooks added to correct some mess from 0.7.0
  * 
  * @since 0.7.2 hook wpc_activated to correct another mess
+ * 
+ * @since 1.0.0 added a cleaner way to load styles in WPC admin page
  */
 add_action( 'wp_loaded', 'wpc_scripts_register');
 
@@ -75,6 +77,8 @@ add_action( 'wp_enqueue_scripts', 'wpc_scripts');
 add_action( 'activated_plugin', 'wpc_activated');
 
 add_action( 'wp_loaded', 'wpc_activated');
+
+add_action( 'admin_enqueue_scripts', 'wpc_admin_style');
 
 //Added to dequeue and deregister scripts when deactivating.
 register_deactivation_hook( __FILE__, 'wpcOnDeactivate' );

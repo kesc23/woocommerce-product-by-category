@@ -122,3 +122,22 @@ function wpc_show_categories()
     }
     return $wpc_catname_datalist;
 }
+
+/**
+ * Function to add Stylesheet for the WPC admin page.
+ * 
+ * @since 0.7.0
+ * 
+ * @since 1.0.0           Updated format to better fit 
+ *                        WordPress enqueueing in admin pages
+ *                        and changed to admin-functions.php
+ */
+function wpc_admin_style()
+{
+    // if page is set and is WPC admin page
+    if ( isset($_GET['page']) && $_GET['page'] == 'wpc-page' )
+    {
+        wp_enqueue_style( 'wpc_admin', plugins_url( 'style.css' , __DIR__ . '/admin' ) );
+        wp_enqueue_style( 'wpc_FA_font_style' );
+    }
+}

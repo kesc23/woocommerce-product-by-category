@@ -6,16 +6,6 @@ if ( ! defined( 'ABSPATH' ) ||  ! defined( 'WPCADMIN' ) )
 
 require_once WPCADMIN . 'admin-functions.php';
 
-require_once WPCADMIN . 'style.php';
-
-wp_enqueue_style( 'wpc_FA_font_style' );
-
-/**
- * Calls the admin stylesheet.
- * 
- * @see admin/style.php
- */
-echo wpc_admin_style();
 ?>
 <!-- Loads Clipboard Functionality -->
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
@@ -29,7 +19,7 @@ echo wpc_admin_style();
 
     <div class="wpc header">
         <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-        <p>Hello</p>
+        <p>Hello, You!</p>
     </div>
 
 

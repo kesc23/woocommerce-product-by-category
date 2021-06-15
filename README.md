@@ -5,44 +5,28 @@
 |-|-:|
 | [@kevin_esc23](https://twitter.com/kevin_esc23) | [/kesc23](https://fiverr.com/kesc23)|
 
-### Version 0.8.1
+### Version 1.0.0
 #### Changelog
 
-- **HOTFIX !**
+#### **THE PLUGIN IS ON**
 
-Fixed error in shortcode generator.
+Finally i could finish the plugin in a way that's *quite* clean to go.
 
-The user was unable to select how many products would have to appear in a row.
+Now you can enjoy some sliders in your store without bothering with some issues 
+that were appearing in the past.
 
-#### Version 0.8.0
-##### Changelog
+##### Create Your Slider
 
-### *Desktop Update*
-- Changed the way Scrollbars look in Desktop
+Select from all of your product categories *(the empties will not appear)* and
+limit the products shown in the loop.
 
-```css
-    .wpc-scroller::-webkit-scrollbar{
-        background-color: rgb(209, 209, 209);
-        height: 8px;
-        display: block;
-        border-radius: 100vh;
-     }
-     .wpc-scroller::-webkit-scrollbar-thumb{
-        background-color: rgb(150, 150, 150);
-        border-radius: 100vh;
-        max-height: 3px;
-     }
-     .wpc-scroller::-webkit-scrollbar-thumb:active{
-        background-color: rgb(70, 70, 70);
-     }
-```
+##### No need to Worry in Smartphones
 
-By resizing and adding some styles in the scrollbar, 
-we could make something that fit the style we wanted to the plugin. 
-Now we do recommend that you put more than 5 products to show in the desktop
+WPC was build with a mobile 1st design from start, so you'll not have 
+any problems of compatibility with the sliders in mobile.
 
-- Changed Product Loop photo size and card size
+###### **Deactivation Update**
 
-By adding the last update, we focused in founding a card size that would fit great 5 products in the loop for a minimum 1024px width resolution.
+- Created wpc-deactivation.php file, creating a routine to dequeue and deregister scripts and css files from WPC on deactivation.
 
-with this, we upgraded the photo size to 190px and now it all fits great.
+- deleted wpc_loop_elementor.css as it is not needed anymore;

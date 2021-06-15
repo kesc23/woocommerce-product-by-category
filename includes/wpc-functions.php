@@ -120,7 +120,7 @@ function wpc_shortcode_to_products()
  * 
  * @since 0.6.0
  */
-require_once ((__WPCDIR__) . '/includes/product-loop.php');
+require_once ((WPCDIR) . '/includes/product-loop.php');
 
 
 /**
@@ -164,7 +164,7 @@ function wpc_activated(){
     {
         do_action( 'admin_messages' , 'WooCommerce is not Activated. Please Activate Woocommerce', 'error');
 
-        deactivate_plugins( __WPCDIR__ . '/woocommerce-product-by-category.php' );
+        deactivate_plugins( WPCDIR . '/woocommerce-product-by-category.php' );
     }
 
 }
