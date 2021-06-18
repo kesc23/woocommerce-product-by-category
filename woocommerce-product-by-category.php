@@ -67,6 +67,7 @@ require_once 'wpc-deactivation.php';
  * @since 0.7.1 Action hooks added to correct some mess from 0.7.0
  * 
  * @since 0.7.2 hook wpc_activated to correct another mess
+ * @since 1.0.1 hook wpc_activated was excluded temporarily due to bugs in wp while loading: UNDER INVESTIGATION
  * 
  * @since 1.0.0 added a cleaner way to load styles in WPC admin page
  */
@@ -74,9 +75,9 @@ add_action( 'wp_loaded', 'wpc_scripts_register');
 
 add_action( 'wp_enqueue_scripts', 'wpc_scripts');
 
-add_action( 'activated_plugin', 'wpc_activated');
+// add_action( 'activated_plugin', 'wpc_activated');
 
-add_action( 'wp_loaded', 'wpc_activated');
+// add_action( 'wp_loaded', 'wpc_activated');
 
 add_action( 'admin_enqueue_scripts', 'wpc_admin_style');
 
