@@ -5,7 +5,7 @@
  * Description: Tenha em seu site um ótimo componente responsivo para mostrar os produtos e suas categorias na sua loja
  * Author URI: https://felizex.press
  * @copyright: Copyright (c) 2021, Kesc23
- * @version: 1.0.0
+ * @version: 1.0.1
  * @license: GPL v3.0 or Later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' )){
 /**
  * Declares the plugin version
  */
-$wpc_version = '1.0.0';
+$wpc_version = '1.0.1';
 
 
 /**
