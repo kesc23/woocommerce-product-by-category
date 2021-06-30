@@ -91,3 +91,19 @@ div.wpc-shortcode-field span {
 .wpc-shortcode-generator, .wpc.header {
     filter: drop-shadow(0px 4px 3px rgba(0,0,0,0.10));
 }
+
+*::-webkit-scrollbar{
+    background-color: rgb(209, 209, 209);
+    height: 8px;
+    display: block;
+    border-radius: 100vh;
+    max-width: 7px;
+}
+*::-webkit-scrollbar-thumb{
+    background-color: rgb(150, 150, 150);
+    border-radius: 100vh;
+    max-height: 3px;
+}
+*::-webkit-scrollbar-thumb:active{
+    background-color: rgb(70, 70, 70);
+}

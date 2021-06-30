@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Slide it! Slider For WooCommerce
  * @author: Kesc23
- * Description: Put an useful responsive slider to show your products inside your store.
+ * Description: Put an useful, beautiful & responsive slider to show products inside your store.
  * Author URI: https://felizex.press
  * @copyright: Copyright (c) 2021, Kesc23
  * @version: 1.0.0
@@ -49,6 +49,14 @@ if ( ! defined('WPCADMIN') )
 if ( ! defined( 'WPCINC' ))
 {
     define( 'WPCINC', WPCDIR . '/includes' . '/' );
+}
+
+/**
+ * Defines for the development process to begin
+ */
+if ( ! defined( 'WPCDEV' )){
+    define( 'WPCDEV', true );
+    include_once 'wpc-dev.php';
 }
 
 /**

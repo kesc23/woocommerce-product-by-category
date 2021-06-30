@@ -30,29 +30,28 @@ require_once WPCADMIN . 'admin-functions.php';
     </style>
     
     <?php 
-        echo wpc_display_shortcode();       
+        echo wpc_display_shortcode();
     ?>
 
     <div class="wpc-shortcode-generator" id="wpc-light">
         <!-- <h3>[WPC_PRODUCT_SHORTCODE cat-name="<span id="wpc-cat-name"></span>" ]</h3> -->
         <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" id="wpc-form">
             
-            <label for="cat-name">Nome Da Categoria</label>
+            <label for="cat-name">Category Name</label>
                 <input type="text" list="wpc-cat-list" name="cat-name" id="cat-name" placeholder="e.g. Pet-Shop">
                 <datalist id="wpc-cat-list">
                     <?php echo wpc_show_categories();?>
                 </datalist>
 
-            <label for="num-p">Número de Produtos</label>
+            <label for="num-p">Number of products</label>
                 <input type="number" name="num-p" id="num-p" step="1" value="5" placeholder="5">
             
-            <label for="p-order">Ordenar Por Nome</label>
+            <label for="p-order">Order By Name</label>
                 <select name="p-order" id="p-order">
-                    <option value="ASC" selected>Ascendente</option>
-                    <option value="DESC">Descendente</option>
+                    <option value="ASC" selected>Ascendent</option>
+                    <option value="DESC">Descendent</option>
                 </select>
-            <button type="submit" style="cursor: pointer;">Criar</button>
+            <button type="submit" style="cursor: pointer;">Create !</button>
         </form>
     </div>
 </div>
-
