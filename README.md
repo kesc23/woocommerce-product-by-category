@@ -1,9 +1,11 @@
-# WooCommerce Product By Category
+# Slide it! - Slider for WooCommerce
 
 ### Author: Kesc23
 | Twitter | Fiverr |
 |-|-:|
 | [@kevin_esc23](https://twitter.com/kevin_esc23) | [/kesc23](https://fiverr.com/kesc23)|
+
+### **Name changed to be compliant with WordPres guidelines**
 
 ### Version 1.0.0
 #### Changelog
