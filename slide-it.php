@@ -5,7 +5,7 @@
  * Description: Put an useful, beautiful & responsive slider to show products inside your store.
  * Author URI: https://felizex.press
  * @copyright: Copyright (c) 2021, Kesc23
- * @version: 1.0.0
+ * @version: 2.0.0
  * @license: GPL v3.0 or Later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' )){
 /**
  * Declares the plugin version
  */
-$wpc_version = '1.0.0';
+$wpc_version = '2.0.0';
 
 
 /**
@@ -69,15 +69,14 @@ require_once WPCINC . 'wpc-shortcodes.php';
 
 require_once WPCADMIN . 'admin-functions.php';
 
-require_once 'wpc-deactivation.php';
+require_once 'slide-it-deactivation.php';
 
 /**
  * @since 0.7.1 Action hooks added to correct some mess from 0.7.0
  * 
  * @since 0.7.2 hook wpc_activated to correct another mess
+ * @since 1.0.0 added a cleaner way to load styles in WPC admin page.
  * @since 1.0.1 hook wpc_activated was excluded temporarily due to bugs in wp while loading: UNDER INVESTIGATION
- * 
- * @since 1.0.0 added a cleaner way to load styles in WPC admin page
  */
 add_action( 'wp_loaded', 'wpc_scripts_register');
 

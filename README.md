@@ -7,7 +7,7 @@
 
 ### **Name changed to be compliant with WordPres guidelines**
 
-### Version 1.0.0
+### Version 2.0.0
 #### Changelog
 
 #### **THE PLUGIN IS ON**
@@ -27,8 +27,3 @@ limit the products shown in the loop.
 WPC was build with a mobile 1st design from start, so you'll not have 
 any problems of compatibility with the sliders in mobile.
 
-###### **Deactivation Update**
-
-- Created wpc-deactivation.php file, creating a routine to dequeue and deregister scripts and css files from WPC on deactivation.
-
-- deleted wpc_loop_elementor.css as it is not needed anymore;

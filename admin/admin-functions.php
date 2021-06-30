@@ -49,7 +49,7 @@ add_action( 'admin_messages', 'wpc_show_messages', 10, 2);
  * Function to display the shortcode in the admin page.
  *
  * @since 0.7.0
- * @since 1.0.0 now validates existing, non-empty categories.
+ * @since 2.0.0 now validates existing, non-empty categories.
  * 
  * @return string returns the shotcode field
  */

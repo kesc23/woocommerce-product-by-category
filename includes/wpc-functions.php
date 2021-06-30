@@ -15,7 +15,7 @@ add_action( 'admin_menu', 'wpc_add_menu' );
  * Function to define the plugin admin page
  * 
  * @since 0.1.0
- * @since 1.0.0 changed several things for rebranding.
+ * @since 2.0.0 changed several things for rebranding.
  */
 function wpc_add_menu()
 {   
