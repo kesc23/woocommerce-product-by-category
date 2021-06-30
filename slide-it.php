@@ -51,13 +51,7 @@ if ( ! defined( 'WPCINC' ))
     define( 'WPCINC', WPCDIR . '/includes' . '/' );
 }
 
-/**
- * Defines for the development process to begin
- */
-if ( ! defined( 'WPCDEV' )){
-    define( 'WPCDEV', true );
-    include_once 'wpc-dev.php';
-}
+
 
 /**
  * Loads the main scripts to run the plugin
