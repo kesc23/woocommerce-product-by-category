@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: Woocommerce Product By Category
+ * Plugin Name: Slide it! Slider For WooCommerce
  * @author: Kesc23
- * Description: Tenha em seu site um ótimo componente responsivo para mostrar os produtos e suas categorias na sua loja
+ * Description: Put an useful responsive slider to show your products inside your store.
  * Author URI: https://felizex.press
  * @copyright: Copyright (c) 2021, Kesc23
- * @version: 1.0.1
+ * @version: 1.0.0
  * @license: GPL v3.0 or Later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' )){
 /**
  * Declares the plugin version
  */
-$wpc_version = '1.0.1';
+$wpc_version = '1.0.0';
 
 
 /**
