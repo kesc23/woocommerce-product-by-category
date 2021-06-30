@@ -5,7 +5,7 @@
 |-|-:|
 | [@kevin_esc23](https://twitter.com/kevin_esc23) | [/kesc23](https://fiverr.com/kesc23)|
 
-### **Name changed to be compliant with WordPres guidelines**
+### **Name changed to be compliant with WordPress guidelines**
 
 ### Version 2.0.0
 #### Changelog
