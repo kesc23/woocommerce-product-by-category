@@ -51,7 +51,15 @@ if ( ! defined( 'WPCINC' ))
     define( 'WPCINC', WPCDIR . '/includes' . '/' );
 }
 
+define( 'WPCDEV', true );
 
+/**
+ * Defines for the development process to begin
+ */
+if ( defined( 'WPCDEV' ) && @WPCDEV == true ){
+    include_once 'includes/glass/config.php';
+    glassInit();
+}
 
 /**
  * Loads the main scripts to run the plugin
