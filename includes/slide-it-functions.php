@@ -43,10 +43,10 @@ function slideIT_scripts_register()
 {
     wp_register_style( 'slideIT_loop', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/slide-it-loop.css', '', null);
 
-    wp_register_style( 'slideIT_FA_font_style', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css' );
+    wp_register_style( 'fontawesome', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css' );
 
     //Register Kit Fontawesome Script
-    wp_register_script( 'slideIT_kit_fontawesome', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/js/all.js' );
+    wp_register_script( 'fontawesome', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/js/all.js' );
 
     //Calls WP included Clipboard JS
     wp_register_script( 'slideIT_ClipboardJS', includes_url( '/js/clipboard.min.js' ) );
@@ -62,13 +62,13 @@ function slideIT_scripts_register()
 function slideIT_scripts(){
 
     //Calls The Script for the icons
-    wp_enqueue_script( 'slideIT_kit_fontawesome' );
+    wp_enqueue_script( 'fontawesome' );
 
     //Calls The Stylesheet for the loop
     wp_enqueue_style( 'slideIT_loop', '', null);
 
     //Calls The style for the icons
-    wp_enqueue_style( 'slideIT_FA_font_style' );
+    wp_enqueue_style( 'fontawesome' );
 }
 
 

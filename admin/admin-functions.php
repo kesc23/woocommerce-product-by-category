@@ -152,8 +152,8 @@ function slideIT_admin_style()
     // if page is set and is WPC admin page
     if ( isset( $_GET['page'] ) && @$_GET['page'] == 'slide-it' ):
         wp_enqueue_script( 'slideIT_ClipboardJS' ); //Calls WP included Clipboard JS
-        wp_enqueue_script( 'slideIT_kit_fontawesome' );
+        wp_enqueue_script( 'fontawesome' );
         wp_enqueue_style( 'slideIT_admin', plugins_url( 'style.css' , __DIR__ . '/admin' ) );
-        wp_enqueue_style( 'slideIT_FA_font_style' );
+        wp_enqueue_style( 'fontawesome' );
     endif;
 }

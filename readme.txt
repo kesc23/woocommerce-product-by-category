@@ -2,7 +2,7 @@
 Contributors: kesc23
 Tags: slider, woocommerce, store, online, slide it, css slider.
 Tested up to: 5.7.2
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
  
@@ -22,7 +22,10 @@ any problems of compatibility with the sliders in mobile.
 
 == Changelog ==
 
-= 2.0.1 =
+= 2.1.1=
+* Renamed some hook handles
+
+= 2.1.0 =
 * Changed names of several archives, handles, functions, constants to avoid errors in wp execution
 * Now loading some libraries directly from WP.
 
