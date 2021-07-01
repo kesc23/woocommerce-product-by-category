@@ -1,9 +1,8 @@
 === Slide It! ===
 Contributors: kesc23
-Donate link: http://example.com/
 Tags: slider, woocommerce, store, online, slide it, css slider.
 Tested up to: 5.7.2
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
  
@@ -22,6 +21,10 @@ WPC was build with a mobile 1st design from start, so you'll not have
 any problems of compatibility with the sliders in mobile.
 
 == Changelog ==
+
+= 2.0.1 =
+* Changed names of several archives, handles, functions, constants to avoid errors in wp execution
+* Now loading some libraries directly from WP.
 
 = 2.0.0 =
 * Re branded the plugin.

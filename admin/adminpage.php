@@ -1,15 +1,12 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ||  ! defined( 'WPCADMIN' ) )
+if ( ! defined( 'ABSPATH' ) ||  ! defined( 'slideIT_ADMIN' ) )
 {
     exit;
 }
 
-require_once WPCADMIN . 'admin-functions.php';
+require_once slideIT_ADMIN . 'admin-functions.php';
 
 ?>
-<!-- Loads Clipboard Functionality -->
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
-
 <script>
     // instance of the clipboard
     var wpcShort = new ClipboardJS('.wpc-copy');
@@ -30,7 +27,7 @@ require_once WPCADMIN . 'admin-functions.php';
     </style>
     
     <?php 
-        echo wpc_display_shortcode();
+        echo slideIT_display_shortcode();
     ?>
 
     <div class="wpc-shortcode-generator" id="wpc-light">
@@ -40,7 +37,7 @@ require_once WPCADMIN . 'admin-functions.php';
             <label for="cat-name">Category Name</label>
                 <input type="text" list="wpc-cat-list" name="cat-name" id="cat-name" placeholder="e.g. Pet-Shop">
                 <datalist id="wpc-cat-list">
-                    <?php echo wpc_show_categories();?>
+                    <?php echo slideIT_show_categories();?>
                 </datalist>
 
             <label for="num-p">Number of products</label>

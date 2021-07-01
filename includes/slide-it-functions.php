@@ -1,14 +1,15 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) && ! defined( 'WPCINC' ) ): exit; endif;
+if ( ! defined( 'ABSPATH' ) && ! defined( 'slideIT_INC' ) ): exit; endif;
 
 /**
  * Function to define the plugin admin page
  * 
  * @since 0.1.0
  * @since 2.0.0 changed several things for rebranding.
+ * @since 2.1.0 changed name from wpc_add_menu to slideIT_add_menu
  */
-function wpc_add_menu()
+function slideIT_add_menu()
 {   
     
     add_menu_page(
@@ -16,35 +17,39 @@ function wpc_add_menu()
         'Slide It!',
         'manage_options',
         "/slide-it",
-        'wpc_admin_page',
+        'slideIT_admin_page',
         'dashicons-slides',
         58
     );
     
 }
 
-
 /**
  * This function includes the admin page.
+ * @since 2.1.0 changed name from wpc_admin_page to slideIT_admin_page
  */
-function wpc_admin_page()
+function slideIT_admin_page()
 {
-    include_once WPCADMIN . 'adminpage.php';
+    include_once slideIT_ADMIN . 'adminpage.php';
 }
 
 /**
  * This function helps to register the styles for the boxes.
  * 
  * @since 0.7.1
+ * @since 2.1.0 changed name from wpc_scripts_register to slideIT_scripts_register
  */
-function wpc_scripts_register()
+function slideIT_scripts_register()
 {
-    wp_register_style( 'wpc_loop', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/wpc_loop.css', '', null);
+    wp_register_style( 'slideIT_loop', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/slide-it-loop.css', '', null);
 
-    wp_register_style( 'wpc_FA_font_style', 'https://use.fontawesome.com/releases/v5.15.3/css/all.css');
+    wp_register_style( 'slideIT_FA_font_style', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css' );
 
     //Register Kit Fontawesome Script
-    wp_register_script( 'wpc_kit_fontawesome', 'https://kit.fontawesome.com/b3fc9df41f.js');
+    wp_register_script( 'slideIT_kit_fontawesome', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/js/all.js' );
+
+    //Calls WP included Clipboard JS
+    wp_register_script( 'slideIT_ClipboardJS', includes_url( '/js/clipboard.min.js' ) );
 
 }
 
@@ -52,17 +57,18 @@ function wpc_scripts_register()
  * This function help to load the styles for the boxes.
  * 
  * @since 0.7.1
+ * @since 2.1.0 changed name from wpc_scripts to slideIT_scripts
  */
-function wpc_scripts(){
+function slideIT_scripts(){
 
     //Calls The Script for the icons
-    wp_enqueue_script( 'wpc_kit_fontawesome' );
+    wp_enqueue_script( 'slideIT_kit_fontawesome' );
 
     //Calls The Stylesheet for the loop
-    wp_enqueue_style( 'wpc_loop', '', null);
+    wp_enqueue_style( 'slideIT_loop', '', null);
 
     //Calls The style for the icons
-    wp_enqueue_style( 'wpc_FA_font_style' );
+    wp_enqueue_style( 'slideIT_FA_font_style' );
 }
 
 
@@ -110,7 +116,7 @@ function wpc_shortcode_to_products()
  * 
  * @since 0.6.0
  */
-require_once ((WPCDIR) . '/includes/product-loop.php');
+require_once slideIT_INC . 'product-loop.php';
 
 
 /**
@@ -119,10 +125,10 @@ require_once ((WPCDIR) . '/includes/product-loop.php');
  * @return string 
  * 
  * @since 0.6.0
- * @since 0.7.0 added the functionality to filter by its attributes
- * passed in the shorcode.
+ * @since 0.7.0 added the functionality to filter by its attributes passed in the shorcode.
+ * @since 2.1.0 changed name from wpc_shortcode_containter to slideIT_shortcode_containter
  */
-function wpc_shortcode_container( $atts )
+function slideIT_shortcode_container( $atts )
 {
     $atts = shortcode_atts(
         array(
@@ -137,7 +143,7 @@ function wpc_shortcode_container( $atts )
      * @since 0.6.0
      */
     
-    return wpc_get_template($atts['cat-name'], $atts['num-p'], $atts['p-order']);
+    return slideIT_get_template($atts['cat-name'], $atts['num-p'], $atts['p-order']);
 
 }
 
@@ -150,20 +156,20 @@ function wpc_shortcode_container( $atts )
  * @since 2.1.0          The action hook to add the menu is only added if the plugin is correctly loaded.
  *                       This is to prevent the Slide It menu being visible after the plugin is deactivated
  *                       in case some error / missing, deactivated woocommerce event.
- * 
+ *                       Changed function name from wpc_activated to slideIT_activated
  * @return true
  */
-function wpc_activated(){
+function slideIT_activated(){
 
     if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ):
         do_action( 'admin_messages' , 'WooCommerce is not Activated. Please Activate Woocommerce', 'error');
 
-        deactivate_plugins( WPCDIR . '/slide-it.php' );
+        deactivate_plugins( slideIT_DIR . 'slide-it.php' );
 
         return false;
     else:
         // ADICIONA MENU DO PLUGIN
-        add_action( 'admin_menu', 'wpc_add_menu' );
+        add_action( 'admin_menu', 'slideIT_add_menu' );
         return true;
     endif;
 }

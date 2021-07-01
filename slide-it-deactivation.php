@@ -17,16 +17,17 @@ if ( ! defined( 'ABSPATH' ) )
  * the styles and scripts.
  *
  * @since 1.0.0
+ * @since 2.1.0 changed name from wpcOnDeactivate to slideITOnDeactivate
  */
-function wpcOnDeactivate()
+function slideITOnDeactivate()
 {
-    wp_dequeue_style( 'wpc_loop' );
-    wp_dequeue_style( 'wpc_FA_font_style' );
-    wp_dequeue_script( 'wpc_kit_fontawesome' );
+    wp_dequeue_style( 'slideIT_loop' );
+    wp_dequeue_style( 'slideIT_FA_font_style' );
+    wp_dequeue_script( 'slideIT_kit_fontawesome' );
 
-    wp_deregister_style( 'wpc_loop' );
-    wp_deregister_style( 'wpc_FA_font_style' );
-    wp_deregister_script( 'wpc_kit_fontawesome' );
+    wp_deregister_style( 'slideIT_loop' );
+    wp_deregister_style( 'slideIT_FA_font_style' );
+    wp_deregister_script( 'slideIT_kit_fontawesome' );
 }
 
 ?>

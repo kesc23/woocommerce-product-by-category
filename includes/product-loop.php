@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' )){
 }
 
 
-function wpc_scroller_start( string $wpc_start_category = null)
+function slideIT_scroller_start( string $wpc_start_category = null)
 {
     if ($wpc_start_category == null){
         $wpc_start_category = 'Produtos';
@@ -31,9 +31,11 @@ function wpc_scroller_start( string $wpc_start_category = null)
  * @param integer $wpc_routine_posts_to_show         Is the 'limiter' for posts
  *                                                   to show inside the loop.
  * @since 0.7.0   @param  string $wpc_routine_order  Is to order, by name if is ASC or DESC
- * @return void
+ * @since 2.1.0   changed name from wpc_scroller_routine to slideIT_scroller_routine
+ * 
+ * @return string
  */
-function wpc_scroller_routine( string $wpc_category_routine, int $wpc_routine_posts_to_show, string $wpc_routine_order)
+function slideIT_scroller_routine( string $wpc_category_routine, int $wpc_routine_posts_to_show, string $wpc_routine_order)
 {   
     if ( $wpc_category_routine == null)
     {
@@ -132,24 +134,24 @@ function wpc_scroller_routine( string $wpc_category_routine, int $wpc_routine_po
 
 
 
-function wpc_scroller_end( string $wpc_category_end = null)
+function slideIT_scroller_end( string $wpc_category_end = null)
 {
     if ($wpc_category_end == null)
     {
         //Change the text for the slider
-        $wpc_slider_link = 'Ver Produtos';
+        $wpc_slider_link = '<p>Show Products</p>';
 
         $wpc_category_url = wc_get_page_permalink( 'shop' );
     
     } else {
         
-        $wpc_slider_link = 'Veja Mais';
+        $wpc_slider_link = '<p>See More</p>';
 
         $wpc_category_url = get_term_link( $wpc_category_end, 'product_cat' );
     
         if (is_object($wpc_category_url))
         {
-            return $wpc_category_url = "<strong>ERROR</strong>: Categoria Não Encontrada" . "</span></span>";
+            return $wpc_category_url = "<strong>ERROR</strong>: Category Not found!" . "</span></span>";
         }
     }
     
@@ -159,7 +161,9 @@ function wpc_scroller_end( string $wpc_category_end = null)
     return
     '           <span class="wpc-btn">
                     <a href="' . $wpc_category_url . '">
-                        <i class="fas fa-arrow-right" style="font-size: 20px;"></i>'
+                        <span class="slide-it-more-logo">
+                            <i class="fas fa-arrow-right" style="font-size: 20px;"></i>
+                        </span>'
                 . $wpc_slider_link .
                     '</a>
                 </span>
@@ -173,6 +177,7 @@ function wpc_scroller_end( string $wpc_category_end = null)
  * WPC GET TEMPLATE
  * 
  * @since 0.6.0
+ * @since 2.1.0                         Changed name from wpc_get_template to slideIT_get_template
  * 
  * @param string $wpc_category          The category name Passed in the Shortcode.
  *                                      If none is passed, it will return all the
@@ -184,7 +189,7 @@ function wpc_scroller_end( string $wpc_category_end = null)
  * @return string                       Returns the concatenation of all requested
  *                                      subfunctions into a beautiful post carousel.
  */
-function wpc_get_template(string $wpc_category = null, int $wpc_posts_to_show = 5, string $wpc_p_order = 'ASC')
+function slideIT_get_template(string $wpc_category = null, int $wpc_posts_to_show = 5, string $wpc_p_order = 'ASC')
 {   
-    return wpc_scroller_start($wpc_category) . wpc_scroller_routine($wpc_category, $wpc_posts_to_show, $wpc_p_order) . wpc_scroller_end($wpc_category);
+    return slideIT_scroller_start($wpc_category) . slideIT_scroller_routine($wpc_category, $wpc_posts_to_show, $wpc_p_order) . slideIT_scroller_end($wpc_category);
 }

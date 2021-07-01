@@ -19,7 +19,7 @@ CREATES A MEDIA QUERY FOR DESKTOP STYLE
         display: inline;
         margin: 5px auto;
         max-width: 12%!important;
-        min-width: 90px!important;
+        min-width: 100px!important;
     }
     /* Each Product in Loop */
     .wpc-post-content li {
@@ -117,14 +117,19 @@ span.wpc-btn {
     margin: 0px 0px 0px auto;
 }
 /* MAKES THE ARROW GO ABOVE THE LEARN MORE TEXT */
-i.fas.fa-arrow-right {
+span.slide-it-more-logo {
+    display: block;
+    margin: 0px auto;
+}
+/* i.fas.fa-arrow-right {
     display: block;
     border-radius: 100%;
     background-color: #FFF;
     padding: 15px;
     -webkit-writing-mode: vertical-lr;
     margin: 0px auto;
-}
+} */
+
 
 /*.wpc{
     border-right: 1px red solid;
