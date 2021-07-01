@@ -86,7 +86,7 @@ add_action( 'wp_enqueue_scripts', 'wpc_scripts');
 
 // add_action( 'activated_plugin', 'wpc_activated');
 
-// add_action( 'wp_loaded', 'wpc_activated');
+add_action( 'wp_loaded', 'wpc_activated');
 
 add_action( 'admin_enqueue_scripts', 'wpc_admin_style');
 

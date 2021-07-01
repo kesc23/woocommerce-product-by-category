@@ -1,15 +1,6 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) && ! defined( 'WPCINC' ) ){
-    exit;
-}
-
-/**
- * ADICIONA MENU DO PLUGIN
-**/
-
-add_action( 'admin_menu', 'wpc_add_menu' );
-
+if ( ! defined( 'ABSPATH' ) && ! defined( 'WPCINC' ) ): exit; endif;
 
 /**
  * Function to define the plugin admin page
@@ -34,10 +25,10 @@ function wpc_add_menu()
 
 
 /**
- * FUNÇÃO PARA EXIBIR O ADMIN 
-**/
-
-function wpc_admin_page(){
+ * This function includes the admin page.
+ */
+function wpc_admin_page()
+{
     include_once WPCADMIN . 'adminpage.php';
 }
 
@@ -156,14 +147,23 @@ function wpc_shortcode_container( $atts )
  * 'wpc_show_messages' function args: ( string $wpc_message, string $wpc_message_type)
  * 
  * @since 0.7.2
-**/
+ * @since 2.1.0          The action hook to add the menu is only added if the plugin is correctly loaded.
+ *                       This is to prevent the Slide It menu being visible after the plugin is deactivated
+ *                       in case some error / missing, deactivated woocommerce event.
+ * 
+ * @return true
+ */
 function wpc_activated(){
 
-    if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) )
-    {
+    if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ):
         do_action( 'admin_messages' , 'WooCommerce is not Activated. Please Activate Woocommerce', 'error');
 
-        deactivate_plugins( WPCDIR . '/woocommerce-product-by-category.php' );
-    }
+        deactivate_plugins( WPCDIR . '/slide-it.php' );
 
+        return false;
+    else:
+        // ADICIONA MENU DO PLUGIN
+        add_action( 'admin_menu', 'wpc_add_menu' );
+        return true;
+    endif;
 }
