@@ -54,16 +54,6 @@ if ( ! defined( 'slideIT_INC' ))
     define( 'slideIT_INC', slideIT_DIR . 'includes' . '/' );
 }
 
-define( 'slideIT_DEV', true );
-
-/**
- * Defines for the development process to begin
- */
-if ( defined( 'slideIT_DEV' ) && @slideIT_DEV == true ){
-    include_once slideIT_INC. 'glass/config.php';
-    glassInit();
-}
-
 /**
  * Loads the main scripts to run the plugin
  */
