@@ -5,8 +5,12 @@
 |-|-:|
 | [@kevin_esc23](https://twitter.com/kevin_esc23) | [/kesc23](https://fiverr.com/kesc23)|
 
-### Version 2.1.1
+### Version 2.1.2
 #### Changelog
+
+- Fixed error message not appearing while trying to star Slide It without WooCommerce
+
+#### From 2.1.1
 
 - Renamed some hook handles
 
