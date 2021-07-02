@@ -5,7 +5,7 @@
  * Description: Put an useful, beautiful & responsive slider to show products inside your store.
  * Author URI: https://felizex.press
  * @copyright: Copyright (c) 2021, Kesc23
- * @version: 2.1.1
+ * @version: 2.1.2
  * @license: GPL v3.0 or Later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' )){
 /**
  * Declares the plugin version
  */
-$wpc_version = '2.1.1';
+$wpc_version = '2.1.2';
 
 
 /**

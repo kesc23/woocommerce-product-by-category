@@ -157,15 +157,15 @@ function slideIT_shortcode_container( $atts )
  *                       This is to prevent the Slide It menu being visible after the plugin is deactivated
  *                       in case some error / missing, deactivated woocommerce event.
  *                       Changed function name from wpc_activated to slideIT_activated
- * @return true
+ * @return boolean
  */
 function slideIT_activated(){
 
     if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ):
-        do_action( 'admin_messages' , 'WooCommerce is not Activated. Please Activate Woocommerce', 'error');
+        
+        echo slideIT_show_messages( 'WooCommerce is not Activated. Please Activate Woocommerce', 'error' );
 
         deactivate_plugins( slideIT_DIR . 'slide-it.php' );
-
         return false;
     else:
         // ADICIONA MENU DO PLUGIN
