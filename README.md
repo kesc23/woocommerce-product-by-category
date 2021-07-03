@@ -5,9 +5,15 @@
 |-|-:|
 | [@kevin_esc23](https://twitter.com/kevin_esc23) | [/kesc23](https://fiverr.com/kesc23)|
 
-### Version 2.1.2
+### Version 2.1.3
 #### Changelog
+- changed function 
+```php
+slideIT_activated()
+```
+As it was causing a fatal error. 
 
+### From 2.1.2
 - Fixed error message not appearing while trying to star Slide It without WooCommerce
 
 #### From 2.1.1

@@ -36,10 +36,13 @@ any problems of compatibility with the sliders in mobile.
 
 == Changelog ==
 
+= 2.1.3 =
+* fixed bug causing fatal error while loading the plugin
+
 = 2.1.2 =
 * Fixed warning about WooCommerce dependency.
 
-= 2.1.1=
+= 2.1.1 =
 * Renamed some hook handles
 
 = 2.1.0 =
