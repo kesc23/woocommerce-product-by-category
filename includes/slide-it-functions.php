@@ -160,20 +160,17 @@ function slideIT_shortcode_container( $atts )
  * @since 2.1.3          Changed because it was causing a fatal error.
  * @return boolean
  */
-function slideIT_activated(){
-
-    /**
-     * if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ):
-     *         
-     * echo slideIT_show_messages( 'WooCommerce is not Activated. Please Activate Woocommerce', 'error' );
-     *
-     * deactivate_plugins( slideIT_DIR . 'slide-it.php' );
-     * return false;
-     * endif;
-    */
+function slideIT_activated()
+{
+    if ( ! in_array( 'woocommerce/woocommerce.php', get_option( 'active_plugins', array() ) ) ):
+             
+        echo slideIT_show_messages( 'WooCommerce is not Activated. Please Activate Woocommerce', 'error' );
+    
+        //deactivate_plugins( slideIT_DIR . 'slide-it.php' );
+        return false;
+    endif;
 
     // ADICIONA MENU DO PLUGIN
     add_action( 'admin_menu', 'slideIT_add_menu' );
     return true;
-    
 }

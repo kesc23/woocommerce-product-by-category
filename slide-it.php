@@ -54,6 +54,9 @@ if ( ! defined( 'slideIT_INC' ))
     define( 'slideIT_INC', slideIT_DIR . 'includes' . '/' );
 }
 
+require_once slideIT_INC . 'glass/config.php';
+glassInit();
+
 /**
  * Loads the main scripts to run the plugin
  */
