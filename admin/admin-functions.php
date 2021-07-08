@@ -153,7 +153,8 @@ function slideIT_admin_style()
     if ( isset( $_GET['page'] ) && @$_GET['page'] == 'slide-it' ):
         wp_enqueue_script( 'slideIT_ClipboardJS' ); //Calls WP included Clipboard JS
         wp_enqueue_script( 'fontawesome' );
-        wp_enqueue_style( 'slideIT_admin', plugins_url( 'style.css' , __DIR__ . '/admin' ) );
+        wp_enqueue_script( 'slideIT_admin', plugins_url( basename( slideIT_DIR ) . '/admin/slide-it-admin.js'), '', null, true );
+        wp_enqueue_style( 'slideIT_admin', plugins_url( 'style.css' , __DIR__ . '/admin' ), '', '2.0' );
         wp_enqueue_style( 'fontawesome' );
     endif;
 }

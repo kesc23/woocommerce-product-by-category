@@ -41,7 +41,7 @@ function slideIT_admin_page()
  */
 function slideIT_scripts_register()
 {
-    wp_register_style( 'slideIT_loop', plugin_dir_url( dirname(__FILE__)) . 'includes/styles/slide-it-loop.css', '', null);
+wp_register_style( 'slideIT_loop', plugin_dir_url( __DIR__ ) . 'includes/styles/slide-it-loop.css', '', '6.2' );
 
     wp_register_style( 'fontawesome', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css' );
 
@@ -51,6 +51,7 @@ function slideIT_scripts_register()
     //Calls WP included Clipboard JS
     wp_register_script( 'slideIT_ClipboardJS', includes_url( '/js/clipboard.min.js' ) );
 
+    wp_register_script( 'slideIT_loop_script', plugin_dir_url( __DIR__ ) . 'includes/scripts/slide-it-loop-script.js', '', null, true );
 }
 
 /**
@@ -65,10 +66,13 @@ function slideIT_scripts(){
     wp_enqueue_script( 'fontawesome' );
 
     //Calls The Stylesheet for the loop
-    wp_enqueue_style( 'slideIT_loop', '', null);
+    wp_enqueue_style( 'slideIT_loop' );
 
     //Calls The style for the icons
     wp_enqueue_style( 'fontawesome' );
+
+    //Calls the script for loop dynamics
+    wp_enqueue_script( 'slideIT_loop_script' );
 }
 
 
@@ -142,9 +146,31 @@ function slideIT_shortcode_container( $atts )
      * 
      * @since 0.6.0
      */
-    
     return slideIT_get_template($atts['cat-name'], $atts['num-p'], $atts['p-order']);
+}
 
+/**
+ * This function adds the new shortcodes to the project.
+ * Now we can add the new card style for the project.
+ * 
+ * @since 2.2.0
+ *
+ * @param  array $atts the attributes passed by the shortcode
+ * @return void
+ */
+function slideITShortcodeContainer( $atts )
+{
+    $atts = shortcode_atts(
+        array(
+            'cat-name' => '',
+            'num-p'    => 5,
+            'p-order'  => 'ASC',
+            'cards'    => 'default',
+        ),
+        $atts
+    );
+    
+    return slideITGetTemplate( $atts['cat-name'], $atts['num-p'], $atts['p-order'], $atts['cards'] );
 }
 
 /**
