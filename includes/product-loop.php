@@ -1,23 +1,33 @@
 <?php
 
-if ( ! defined( 'ABSPATH' )){
-    exit;
-}
+if( ! defined( 'ABSPATH' ) ): exit; endif;
 
-
+/**
+ * This function creates the first HTML tags of the scroller box.
+ *
+ * @since 0.6.0
+ * @since 2.1.0     changed name from wpc_scroller_start to slideIT_scroller_start
+ * 
+ * @deprecated @since 2.2.0 @see slideITScrollerStart()
+ * 
+ * @param string $wpc_start_category
+ * @return void
+ */
 function slideIT_scroller_start( string $wpc_start_category = null)
 {
     if ($wpc_start_category == null){
         $wpc_start_category = 'Produtos';
     }
-    $wpc_start_output = 
-    '<div class="wpc wrap">
+    ob_start(); ?>
+    <div class="wpc wrap">
         <div class="wpc-cat">
-            <h3 style="font-size: 21px; margin: 5px; font-weight: 600; text-transform: captalise">';
-            $wpc_start_output .= $wpc_start_category . '</h3>
+            <h3 style="font-size: 21px; margin: 5px; font-weight: 600; text-transform: captalise">
+                <?php echo esc_html( $wpc_start_category ); ?>
+            </h3>
         </div>
         <span class="wpc-scroller">
-            <span class="wpc-post-content">';
+            <span class="wpc-post-content">
+    <?php $wpc_start_output = ob_get_clean();
     return $wpc_start_output;
 }
 
@@ -87,37 +97,39 @@ function slideIT_scroller_routine( string $wpc_category_routine, int $wpc_routin
          * For the functionality sake, using those parameters to limit them
          * to 'themselves' is the best option.
          */
-        if ( isset($wpc_routine_posts_to_show) && $wpc_routine_posts_to_show == $wpc_post_count)
-        {
 
-            $wpc_post_count = $wpc_post_count;
-        
-        } elseif ( isset($wpc_routine_posts_to_show) && $wpc_routine_posts_to_show > $wpc_post_count)
-        {
-
-            $wpc_post_count = min($wpc_routine_posts_to_show, $wpc_post_count);
-        
-        } elseif ( isset($wpc_routine_posts_to_show) && $wpc_routine_posts_to_show < $wpc_post_count) {
-
-            $wpc_post_count = min($wpc_routine_posts_to_show, $wpc_post_count);
-        
-        }
+        if( isset( $wpc_routine_posts_to_show ) ):
+            if( $wpc_routine_posts_to_show == $wpc_post_count ):
+                $wpc_post_count = $wpc_post_count;
+            else:
+                $wpc_post_count = min($wpc_routine_posts_to_show, $wpc_post_count);
+            endif;
+        endif;
 
 
-        //MAIN LOOP
-
+        /**
+         * MAIN LOOP
+         * @since 2.2.0 the product image is now outside the <a> tag for a better scrollable element
+         */
         $wpc_loop_counter = 0;
         while ( $wpc_loop_counter < $wpc_post_count /*$wpc_product_query->have_posts()*/ )
         {
             $wpc_loop_counter ++;
             $wpc_product_query->the_post();
-            $wpc_output .= 
-                '<li>
-                    <a href="' . get_permalink() . '">
-                        <img src="' . get_the_post_thumbnail_url() . '">
-                        <h3 style="font-size: 18px;">' . get_the_title() . '</h3>
+            ob_start(); ?>
+                <li>
+                    <img src="<?php
+                        if( ! get_the_post_thumbnail_url() ):
+                            echo plugins_url( basename( slideIT_DIR ) ) . '/includes/images/dummy-image.png';
+                        else:
+                            echo get_the_post_thumbnail_url();
+                        endif;
+                    ?>">
+                    <a href="<?php echo get_permalink(); ?>">
+                        <h3 style="font-size: 18px;"><?php echo get_the_title(); ?></h3>
                     </a>
-                </li>';
+                </li>
+        <?php $wpc_output .= ob_get_clean();
         }
         
     } else {
@@ -156,21 +168,20 @@ function slideIT_scroller_end( string $wpc_category_end = null)
     }
     
     //Returns the Category Link
-    
-
-    return
-    '           <span class="wpc-btn">
-                    <a href="' . $wpc_category_url . '">
+    ob_start(); ?>
+                <span class="wpc-btn">
+                    <a href="<?php echo $wpc_category_url; ?>">
                         <span class="slide-it-more-logo">
                             <i class="fas fa-arrow-right" style="font-size: 20px;"></i>
-                        </span>'
-                . $wpc_slider_link .
-                    '</a>
+                        </span>
+                        <?php echo $wpc_slider_link; ?>
+                    </a>
                 </span>
             </span>
         </span>
     </div>
-    ';
+    <?php $scrollerEnd = ob_get_clean();
+    return $scrollerEnd;
 }
 
 /**
@@ -192,4 +203,62 @@ function slideIT_scroller_end( string $wpc_category_end = null)
 function slideIT_get_template(string $wpc_category = null, int $wpc_posts_to_show = 5, string $wpc_p_order = 'ASC')
 {   
     return slideIT_scroller_start($wpc_category) . slideIT_scroller_routine($wpc_category, $wpc_posts_to_show, $wpc_p_order) . slideIT_scroller_end($wpc_category);
+}
+
+
+function slideITGetTemplate( $category, $postsToShow, $productOrder, $cards = null )
+{
+    return slideITScrollerStart( $category, $cards ) . slideIT_scroller_routine( $category, $postsToShow, $productOrder ) . slideIT_scroller_end( $category );
+}
+
+/**
+ * This function creates the first HTML tags of the scroller box.
+ * It is the new, almost identical as its predecessor. The new version
+ * can handle the task of multicard / CSS classes to the scrollers.
+ *
+ * @since 2.2.0
+ * 
+ * @param  string $category     The category inserted in the shortcode
+ * @param  string $cards        The card style for display
+ * @return
+ */
+function slideITScrollerStart( string $category = null, string $cards = 'wpc-post-content' )
+{
+    if ($category == null)
+    {
+        $category = 'Products';
+    }
+
+    $selector = null;
+
+    switch( $cards ){
+
+        case 'card-style':
+            $selector = 'card-style';
+            break;
+
+        case 'seamless':
+            $selector = 'seamless';
+            break;
+
+        default:
+            $selector = 'wpc-post-content';
+            break;
+    }
+
+
+    ob_start(); ?>
+    <div class="wpc wrap">
+        <div class="wpc-cat">
+            <h3 style="font-size: 21px; margin: 5px; font-weight: 600; text-transform: captalise">
+                <?php echo esc_html( $category ); ?>
+            </h3>
+        </div>
+        <span class="wpc-scroller">
+            <span class="<?php echo $selector; ?>">
+                <?php
+    $theLoopStart = ob_get_clean();
+
+    return $theLoopStart;
+
 }
