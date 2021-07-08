@@ -31,24 +31,38 @@ CREATES A MEDIA QUERY FOR DESKTOP STYLE
         height: 190px;
         width: 100%;
         object-fit: cover;
+        pointer-events: none;
      }
 
     /* Change Scrollbar in tablet/Desktop */
-    .wpc-scroller::-webkit-scrollbar{
-        background-color: rgb(209, 209, 209);
-        height: 8px;
+    .wpc-scroller::-webkit-scrollbar
+    {
+        visibility: hidden;
+        background-color: transparent;
         display: block;
         border-radius: 100vh;
-     }
-     .wpc-scroller::-webkit-scrollbar-thumb{
+        width: 18px;
+        height: 18px;
+    }
+    .wpc-scroller::-webkit-scrollbar-thumb
+    {
+        visibility: hidden;
         background-color: rgb(150, 150, 150);
+        border: 5px solid transparent;
+        background-clip: content-box;
         border-radius: 100vh;
-        max-height: 3px;
-     }
-     .wpc-scroller::-webkit-scrollbar-thumb:active{
+    }
+    .wpc-scroller::-webkit-scrollbar-thumb:active
+    {
         background-color: rgb(70, 70, 70);
-     }
-     .wpc-scroller {
+    }
+    .scrollVisible::-webkit-scrollbar, .scrollVisible::-webkit-scrollbar-thumb
+    {
+        visibility: visible!important;
+    }
+    .wpc-scroller {
+        user-select: none;
+        cursor: grab;
         padding-bottom: 5px;
     }
 
@@ -137,3 +151,44 @@ span.slide-it-more-logo {
 .wpc-cat{
     width: 100%;
 }
+
+/**
+ * Seamless Card Styles
+ */
+ .seamless
+ {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: nowrap;
+     align-items: stretch;
+     gap: 10px;
+ }
+ 
+ .seamless > li 
+ {
+     min-width: 165px;
+     max-width: 165px;
+     list-style: none;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+ }
+ 
+ .seamless > li > img
+ {
+     pointer-events: none;
+     max-height: 165px;
+     object-fit: cover;
+     border-radius: 4px 4px 0px 0px;
+     height: -webkit-fill-available;
+ }
+ 
+ .seamless a > h3
+ {
+     font-size: 15px!important;
+     margin: 5px 3px;
+     text-align: center;
+     
+ }
+/**
+ * END OF THE SECTION
+ */
