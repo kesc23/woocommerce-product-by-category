@@ -93,17 +93,20 @@ div.wpc-shortcode-field span {
 }
 
 *::-webkit-scrollbar{
-    background-color: rgb(209, 209, 209);
-    height: 8px;
-    display: block;
-    border-radius: 100vh;
-    max-width: 7px;
+    /* background-color: rgb(209, 209, 209); */
+    background-color: transparent;
+    width: 18px;
+    height: 18px;
 }
 *::-webkit-scrollbar-thumb{
     background-color: rgb(150, 150, 150);
     border-radius: 100vh;
-    max-height: 3px;
+    border: solid 5px transparent;
+    background-clip: content-box;
 }
 *::-webkit-scrollbar-thumb:active{
     background-color: rgb(70, 70, 70);
+}
+span#wpc-generator:active .wpc-shortcode-generator{
+    display: flex;
 }

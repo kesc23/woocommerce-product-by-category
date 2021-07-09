@@ -5,7 +5,7 @@
  * Description: Put an useful, beautiful & responsive slider to show products inside your store.
  * Author URI: https://felizex.press
  * @copyright: Copyright (c) 2021, Kesc23
- * @version: 2.1.3
+ * @version: 2.2.0
  * @license: GPL v3.0 or Later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -66,6 +66,10 @@ require_once slideIT_INC . 'slide-it-functions.php';
 require_once slideIT_INC . 'slide-it-shortcodes.php';
 
 require_once slideIT_ADMIN . 'admin-functions.php';
+
+require_once slideIT_ADMIN . 'ajax-shortcode-response.php';
+
+add_action( 'wp_loaded', 'slide_it_shortcode_generator_ajax', 1 );
 
 require_once 'slide-it-deactivation.php';
 

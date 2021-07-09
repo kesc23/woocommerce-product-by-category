@@ -1,8 +1,5 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ||  ! defined( 'slideIT_ADMIN' ) )
-{
-    exit;
-}
+if ( ! defined( 'ABSPATH' ) ||  ! defined( 'slideIT_ADMIN' ) ): exit; endif;
 
 require_once slideIT_ADMIN . 'admin-functions.php';
 
@@ -18,22 +15,9 @@ require_once slideIT_ADMIN . 'admin-functions.php';
         <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
         <p>Hello, You!</p>
     </div>
-
-
-    <style>
-        span#wpc-generator:active .wpc-shortcode-generator{
-            display: flex;
-        }
-    </style>
-    
-    <?php 
-        echo slideIT_display_shortcode();
-    ?>
-
+    <div id="shortcode-field"></div>
     <div class="wpc-shortcode-generator" id="wpc-light">
-        <!-- <h3>[WPC_PRODUCT_SHORTCODE cat-name="<span id="wpc-cat-name"></span>" ]</h3> -->
-        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" id="wpc-form">
-            
+        <form id="wpc-form">
             <label for="cat-name">Category Name</label>
                 <input type="text" list="wpc-cat-list" name="cat-name" id="cat-name" placeholder="e.g. Pet-Shop">
                 <datalist id="wpc-cat-list">
@@ -48,7 +32,7 @@ require_once slideIT_ADMIN . 'admin-functions.php';
                     <option value="ASC" selected>Ascendent</option>
                     <option value="DESC">Descendent</option>
                 </select>
-            <button type="submit" style="cursor: pointer;">Create !</button>
+            <button id="submit" type="submit" style="cursor: pointer;">Create !</button>
         </form>
     </div>
 </div>
