@@ -1,8 +1,8 @@
 === Slide It! ===
 Contributors: kesc23
-Tags: slider, woocommerce, store, online, slide-it, css-slider,
+Tags: slider, woocommerce, store, online, slide-it, css slider,
 Tested up to: 5.7.2
-Stable tag: 2.1.1
+Stable tag: 2.2.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
  
@@ -12,13 +12,11 @@ Let's add life to your online store with a beautiful product slider!
 
 Let's add life to your woocommerce store with an outstanding product slider
 
-### Create Your Slider
-
+* Create Your Slider
 Select from all of your product categories *(the empties will not appear)* and
 limit the products shown in the loop.
 
-### No need to Worry in Smartphones
-
+* No need to Worry in Smartphones
 WPC was build with a mobile 1st design from start, so you'll not have 
 any problems of compatibility with the sliders in mobile.
 
@@ -35,6 +33,12 @@ any problems of compatibility with the sliders in mobile.
 5. Final mobile view of the sliders
 
 == Changelog ==
+
+= 2.2.0 =
+* Changed shortcode generation form to include the new Card Styles.
+* Created the new [SLIDEIT_SHOW_CONTAINER]. The old [WPC_SHOW_CONTAINER] still works but without the cards.
+* Added the Seamless Card style.
+* Added the Dummy Product image.
 
 = 2.1.3 =
 * fixed bug causing fatal error while loading the plugin
@@ -73,6 +77,9 @@ Now we do recommend that you put more than 5 products to show in the desktop
 By adding the last update, we focused in founding a card size that would fit great 5 products in the loop for a minimum 1024px width resolution. With this, we upgraded the photo size to 190px and now it all fits great.
 
 == Upgrade Notice ==
+
+= 2.2.0 =
+Added Cards functionality & AJAX Shortcode Generator.
 
 = 2.1.0 =
 Rebranded the plugin, several files renamed. No backwards compatibility.
