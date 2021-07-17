@@ -240,6 +240,10 @@ function slideITScrollerStart( string $category = null, string $cards = 'wpc-pos
         case 'seamless':
             $selector = 'seamless';
             break;
+        
+        case 'glass-style':
+            $selector = "glass-style";
+            break;
 
         default:
             $selector = 'wpc-post-content';

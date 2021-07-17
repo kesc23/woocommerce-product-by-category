@@ -21,7 +21,6 @@ function slideIT_add_menu()
         'dashicons-slides',
         58
     );
-    
 }
 
 /**
@@ -41,7 +40,7 @@ function slideIT_admin_page()
  */
 function slideIT_scripts_register()
 {
-wp_register_style( 'slideIT_loop', plugin_dir_url( __DIR__ ) . 'includes/styles/slide-it-loop.css', '', '6.2' );
+wp_register_style( 'slideIT_loop', plugin_dir_url( __DIR__ ) . 'includes/styles/slide-it-loop.css', '', '6.3' );
 
     wp_register_style( 'fontawesome', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css' );
 
