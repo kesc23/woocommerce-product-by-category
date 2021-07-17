@@ -110,3 +110,19 @@ div.wpc-shortcode-field span {
 span#wpc-generator:active .wpc-shortcode-generator{
     display: flex;
 }
+#shortcode-selectors
+{
+    margin-top: 5px;
+    display: flex;
+    flex-basis: 50%;
+    justify-content: space-between;
+    gap: 15px;
+}
+#shortcode-selectors > span
+{
+    width: 100%;
+}
+#shortcode-selectors > span > select
+{
+    min-width: -webkit-fill-available;
+}
