@@ -120,7 +120,7 @@ function slideIT_scroller_routine( string $wpc_category_routine, int $wpc_routin
                 <li>
                     <img src="<?php
                         if( ! get_the_post_thumbnail_url() ):
-                            echo plugins_url( basename( slideIT_DIR ) ) . '/includes/images/dummy-image.png';
+                            echo plugins_url( basename( slideIT_DIR ) ) . '/assets/images/dummy-image.png';
                         else:
                             echo get_the_post_thumbnail_url();
                         endif;
