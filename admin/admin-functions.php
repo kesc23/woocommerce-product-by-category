@@ -5,12 +5,8 @@
  * @author Kesc23
  * @version 0.7.0
  */
+if ( ! defined( 'ABSPATH' ) || ! defined( 'slideIT_ADMIN' ) ): exit; endif;
 
-
-
-if ( ! defined( 'ABSPATH' ) || ! defined( 'slideIT_ADMIN' ) ){
-    exit;
-}
 
 
 /**
@@ -105,7 +101,7 @@ function slideIT_display_shortcode()
  *                      Then returns it inside a option HTML tag
  *                      to be put inside a datalist.
  */
-function slideIT_show_categories()
+function slideIT_show_categories() : string
 {
     /**
      * This routine is to access the Product Categories
@@ -126,6 +122,7 @@ function slideIT_show_categories()
      * if using Glass, you can now prePrint_r( $wpc_cat_list ) gathering
      * the entire info from the variable, or addressing a key to it.
      */
+    $wpc_catname_datalist = null;
     foreach ( $wpc_cat_list as $listItem ) :
 	    if ( empty( $listItem ) ) :
 		    continue;
@@ -133,7 +130,9 @@ function slideIT_show_categories()
 		    $wpc_catname_datalist .= '<option value="' . $listItem->name . '">';
 	    endif;
     endforeach;
-    return $wpc_catname_datalist;
+
+    if( ! null == $wpc_catname_datalist ): return $wpc_catname_datalist; endif;
+    return '';
 }
 
 /**
@@ -146,15 +145,30 @@ function slideIT_show_categories()
  *                        WordPress enqueueing in admin pages
  *                        and changed to admin-functions.php
  * @since 2.1.0           Added path to internal WP CliboardJS
+ * @return void
  */
-function slideIT_admin_style()
+function slideIT_admin_style():void
 {
     // if page is set and is WPC admin page
     if ( isset( $_GET['page'] ) && @$_GET['page'] == 'slide-it' ):
         wp_enqueue_script( 'slideIT_ClipboardJS' ); //Calls WP included Clipboard JS
         wp_enqueue_script( 'fontawesome' );
-        wp_enqueue_script( 'slideIT_admin', plugins_url( basename( slideIT_DIR ) . '/admin/slide-it-admin.js'), '', '1.0', true );
-        wp_enqueue_style( 'slideIT_admin', plugins_url( 'style.css' , __DIR__ . '/admin' ), '', '2.0' );
+        //wp_enqueue_script( 'slideIT_admin', plugins_url( basename( slideIT_DIR ) . '/admin/slide-it-admin.js'), '', '1.1', true );
+        wp_enqueue_style( 'slideIT_admin', plugins_url( 'style.css' , __DIR__ . '/admin' ), '', '2.1' );
         wp_enqueue_style( 'fontawesome' );
     endif;
+}
+
+/**
+ * This function is to set a condition to the ajax request inside the Shortcode Generator.
+ * 
+ * @since 2.2.0
+ *
+ * @return void
+ */
+function slide_it_time() : void
+{
+    global $slide_it_time;
+
+    $slide_it_time = sha1( (string) time() );
 }
