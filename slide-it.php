@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' )){
 /**
  * Declares the plugin version
  */
-$wpc_version = '2.1.3';
+$slide_it_version = '2.2.0';
 
 
 /**
@@ -84,7 +84,7 @@ add_action( 'wp_loaded', 'slideIT_scripts_register');
 
 add_action( 'wp_enqueue_scripts', 'slideIT_scripts');
 
-add_action( 'wp_loaded', 'slideIT_activated');
+add_action( 'wp_loaded', 'slideIT_activated', 0 );
 
 add_action( 'admin_enqueue_scripts', 'slideIT_admin_style');
 
