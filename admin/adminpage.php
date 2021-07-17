@@ -35,7 +35,7 @@ slide_it_time();
                     <label for="cards">Card Type</label>
                     <select name="cards" id="cards">
                         <option value="default" selected>Default</option>
-                        <option value="seamless" selected>Seamless</option>
+                        <option value="seamless" >Seamless</option>
                         <!-- <option value="card-style">Card Style</option> -->
                     </select>
                 </span>
