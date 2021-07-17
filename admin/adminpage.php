@@ -1,7 +1,11 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ||  ! defined( 'slideIT_ADMIN' ) ): exit; endif;
 
+global $slide_it_version, $slide_it_time;
+
 require_once slideIT_ADMIN . 'admin-functions.php';
+
+slide_it_time();
 
 ?>
 <script>
@@ -26,13 +30,26 @@ require_once slideIT_ADMIN . 'admin-functions.php';
 
             <label for="num-p">Number of products</label>
                 <input type="number" name="num-p" id="num-p" step="1" value="5" placeholder="5">
-            
-            <label for="p-order">Order By Name</label>
-                <select name="p-order" id="p-order">
-                    <option value="ASC" selected>Ascendent</option>
-                    <option value="DESC">Descendent</option>
-                </select>
+            <div id="shortcode-selectors"> 
+                <span>
+                    <label for="cards">Card Type</label>
+                    <select name="cards" id="cards">
+                        <option value="default" selected>Default</option>
+                        <option value="seamless" selected>Seamless</option>
+                        <!-- <option value="card-style">Card Style</option> -->
+                    </select>
+                </span>
+                <span>
+                    <label for="p-order">Order By Name</label>
+                    <select name="p-order" id="p-order">
+                        <option value="ASC" selected>Ascendent</option>
+                        <option value="DESC">Descendent</option>
+                    </select>
+                </span>
+            </div>
             <button id="submit" type="submit" style="cursor: pointer;">Create !</button>
         </form>
     </div>
 </div>
+<?php
+require_once slideIT_ADMIN . 'slide-it-admin-js.php';
