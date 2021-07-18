@@ -106,22 +106,24 @@ function slide_it_shortcode_generator_ajax() : string
         )
     );
 
+    $notEmptyCategories = array();
+
     foreach( $cat_list as $validCategory ):
         $notEmptyCategories[] = $validCategory->name;
     endforeach;
 
     if ( $theData['cat-name'] == '' || $theData['cat-name'] == null ):
         header( "User-Agent: Slide it! Shortcode Generator", true, 400 );
-        echo slideITErrorMessage( 'Category not inserted' ); // returns error if category name is not set
+        echo slideITErrorMessage( __( 'Category not inserted', 'slide-it-slider-for-woocommerce' ) ); // returns error if category name is not set
     elseif ( ! in_array( $theData['cat-name'], $notEmptyCategories ) ):
         header( "User-Agent: Slide it! Shortcode Generator", true, 400 );
-        echo slideITErrorMessage( 'Category entered is empty or invalid' );
+        echo slideITErrorMessage( __( 'Category entered is empty or invalid', 'slide-it-slider-for-woocommerce' ) );
     elseif ( $theData['num-p'] <= -2 ):
         header( "User-Agent: Slide it! Shortcode Generator", true, 400 );
-        echo slideITErrorMessage( 'Invalid Number' ); // returns error if num-p is less than 2. -1 has a role.
+        echo slideITErrorMessage( __( 'Invalid Number', 'slide-it-slider-for-woocommerce' ) ); // returns error if num-p is less than 2. -1 has a role.
     else:
         header( "User-Agent: Slide it! Shortcode Generator", true, 200 );
-        echo slideITAprovedMessage( 'This is yours shortcode. Put it in the desired page.' );
+        echo slideITAprovedMessage( __( 'This is yours shortcode. Put it in the desired page.', 'slide-it-slider-for-woocommerce' )  );
         $category     = esc_attr( $theData['cat-name'] );
         $numProducts  = esc_attr( $theData['num-p'] );
         $productOrder = esc_attr( $theData['p-order'] );

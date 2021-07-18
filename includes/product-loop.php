@@ -135,7 +135,7 @@ function slideIT_scroller_routine( string $wpc_category_routine, int $wpc_routin
     } else {
 
         // no posts found
-        return 'Nenhum produto encontrado ';
+        return '<span>'. __( 'No products found!', 'slide-it-slider-for-woocommerce') .'</span>';
     }
 
     /* Restore original Post Data */
@@ -151,19 +151,37 @@ function slideIT_scroller_end( string $wpc_category_end = null)
     if ($wpc_category_end == null)
     {
         //Change the text for the slider
-        $wpc_slider_link = '<p>Show Products</p>';
+        ob_start(); ?>
+            <p><?php esc_html_e( 'Show Products' ,'slide-it-slider-for-woocommerce'); ?></p>
+        <?php
+        $wpc_slider_link = ob_get_clean();
 
         $wpc_category_url = wc_get_page_permalink( 'shop' );
     
     } else {
-        
-        $wpc_slider_link = '<p>See More</p>';
+
+        ob_start(); ?>
+            <p><?php esc_html_e( 'See More' ,'slide-it-slider-for-woocommerce'); ?></p>
+        <?php
+        $wpc_slider_link = ob_get_clean();
 
         $wpc_category_url = get_term_link( $wpc_category_end, 'product_cat' );
     
         if (is_object($wpc_category_url))
         {
-            return $wpc_category_url = "<strong>ERROR</strong>: Category Not found!" . "</span></span>";
+            ob_start(); ?>
+                    <strong>
+                        <?php esc_html_e( 'ERROR' , 'slide-it-slider-for-woocommerce' ); ?>
+                    </strong>
+                    <span>
+                        : <?php esc_html_e( 'Category Not found!' , 'slide-it-slider-for-woocommerce' ); ?>
+                    </span>
+                </span>
+            </span>
+            <?php
+            $wpc_category_url = ob_get_clean();
+
+            return $wpc_category_url;
         }
     }
     

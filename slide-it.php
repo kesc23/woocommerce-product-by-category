@@ -4,21 +4,20 @@
  * @author: Kesc23
  * Description: Put an useful, beautiful & responsive slider to show products inside your store.
  * Author URI: https://felizex.press
+ * Plugin URI: https://felizex.press/slide-it
+ * Text Domain: slide-it-slider-for-woocommerce
  * @copyright: Copyright (c) 2021, Kesc23
- * @version: 2.2.0
+ * @version: 2.3.0
  * @license: GPL v3.0 or Later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
 
-if ( ! defined( 'ABSPATH' )){
-    exit;
-}
+if( ! defined( 'ABSPATH' ) ): exit; endif;
 
 /**
  * Declares the plugin version
  */
-$slide_it_version = '2.2.0';
-
+$slide_it_version = '2.3.0';
 
 /**
  * Defines the plugin root path
