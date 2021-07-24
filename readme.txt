@@ -1,14 +1,15 @@
 === Slide It! ===
 Contributors: kesc23
-Tags: slider, woocommerce, store, online, slide-it, css slider,
-Tested up to: 5.7.2
-Stable tag: 2.2.0
+Tags: slider, woocommerce, store, online, slide-it, css slider, scroll slider, slider for wordpress, slide
+Tested up to: 5.8
+Stable tag: 2.3.0
 Requires at least: 4.6
+Requires PHP: 7.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
- 
-Let's add life to your online store with a beautiful product slider!
- 
+
+Let's add life to your online store with a beautiful product slider.
+
 == Description ==
 
 Let's add life to your woocommerce store with an outstanding product slider
@@ -34,6 +35,9 @@ any problems of compatibility with the sliders in mobile.
 5. Final mobile view of the sliders
 
 == Changelog ==
+
+= 2.3.0 =
+* Prepared plugin for internationalization (i18n).
 
 = 2.2.0 =
 * Changed shortcode generation form to include the new Card Styles.
