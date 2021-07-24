@@ -17,22 +17,22 @@ slide_it_time();
 
     <div class="wpc header">
         <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-        <p>Hello, You!</p>
+        <p><?php esc_html_e( 'Hello, You!', 'slide-it-slider-for-woocommerce' );?></p>
     </div>
     <div id="shortcode-field"></div>
     <div class="wpc-shortcode-generator" id="wpc-light">
         <form id="wpc-form">
-            <label for="cat-name">Category Name</label>
+            <label for="cat-name"><?php esc_html_e( 'Category Name', 'slide-it-slider-for-woocommerce' );?></label>
                 <input type="text" list="wpc-cat-list" name="cat-name" id="cat-name" placeholder="e.g. Pet-Shop">
                 <datalist id="wpc-cat-list">
                     <?php echo slideIT_show_categories();?>
                 </datalist>
 
-            <label for="num-p">Number of products</label>
+            <label for="num-p"><?php esc_html_e( 'Number of products', 'slide-it-slider-for-woocommerce' );?></label>
                 <input type="number" name="num-p" id="num-p" step="1" value="5" placeholder="5">
             <div id="shortcode-selectors"> 
                 <span>
-                    <label for="cards">Card Type</label>
+                    <label for="cards"><?php esc_html_e( 'Card Type', 'slide-it-slider-for-woocommerce' );?></label>
                     <select name="cards" id="cards">
                         <option value="default" selected>Default</option>
                         <option value="seamless" >Seamless</option>
@@ -40,14 +40,14 @@ slide_it_time();
                     </select>
                 </span>
                 <span>
-                    <label for="p-order">Order By Name</label>
+                    <label for="p-order"><?php esc_html_e( 'Order By Name', 'slide-it-slider-for-woocommerce' );?></label>
                     <select name="p-order" id="p-order">
                         <option value="ASC" selected>Ascendent</option>
                         <option value="DESC">Descendent</option>
                     </select>
                 </span>
             </div>
-            <button id="submit" type="submit" style="cursor: pointer;">Create !</button>
+            <button id="submit" type="submit" style="cursor: pointer;"><?php esc_html_e( 'Create !', 'slide-it-slider-for-woocommerce' );?></button>
         </form>
     </div>
 </div>
